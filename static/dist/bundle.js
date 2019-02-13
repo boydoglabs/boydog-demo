@@ -710,25 +710,11 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],3:[function(require,module,exports){
-var sharedb = require('sharedb/lib/client');
-var StringBinding = require('sharedb-string-binding');
+var shareDB = require('sharedb/lib/client');
+var stringBinding = require('sharedb-string-binding');
+const rWebSocket = require('reconnecting-websocket');
 
-// Open WebSocket connection to ShareDB server
-const WebSocket = require('reconnecting-websocket');
-var socket = new WebSocket('ws://' + window.location.host);
-var connection = new sharedb.Connection(socket);
-
-var element = document.querySelector('input');
-
-// Create local Doc instance mapped to 'examples' collection document with id 'textarea'
-var doc = connection.get('examples', 'randomABC');
-doc.subscribe(function(err) {
-  if (err) throw err;
-  
-  var binding = new StringBinding(element, doc, ['content']);
-  binding.setup();
-});
-
+window.dog = { shareDB, stringBinding, rWebSocket };
 },{"reconnecting-websocket":9,"sharedb-string-binding":10,"sharedb/lib/client":13}],4:[function(require,module,exports){
 // ISC @ Julien Fontanet
 
