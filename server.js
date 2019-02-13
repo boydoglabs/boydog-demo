@@ -10,7 +10,7 @@ createDoc(startServer);
 // Create initial document then fire callback
 function createDoc(callback) {
   var connection = backend.connect();
-  var doc = connection.get('examples', 'textarea');
+  var doc = connection.get('examples', 'randomABC');
   doc.fetch(function(err) {
     if (err) throw err;
     if (doc.type === null) {
