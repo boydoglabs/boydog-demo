@@ -4,13 +4,13 @@
   "description": "A simple client/server app using ShareDB and WebSockets",
   "main": "server.js",
   "scripts": {
-    "build": "mkdir -p static/dist/ && ./node_modules/.bin/browserify client.js -o static/dist/bundle.js",
+    "build": "browserify client-library.js -o public/boydog-client.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Nate Smith",
+  "author": "BoyDog",
   "contributors": [
-    "Avital Oliver <avital@aoliver.org> (https://aoliver.org/)"
+    "BoyDog"
   ],
   "license": "MIT",
   "dependencies": {
