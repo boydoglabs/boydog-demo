@@ -5,36 +5,28 @@ var ShareDB = require('sharedb');
 var WebSocket = require('ws');
 var WebSocketJSONStream = require('websocket-json-stream');
 
+var app = express();
+app.use(express.static('public'));
+var server = http.createServer(app);
+
 var backend = new ShareDB();
-createDoc(startServer);
+var connection = backend.connect();
 
-// Create initial document then fire callback
-function createDoc(callback) {
-  var connection = backend.connect();
-  var doc = connection.get('examples', 'randomABC');
-  doc.fetch(function(err) {
-    if (err) throw err;
-    if (doc.type === null) {
-      doc.create({ content: '' }, callback);
-      return;
-    }
-    callback();
-  });
-}
+var doc = connection.get('examples', 'randomABC');
+doc.fetch(function(err) {
+  if (err) throw err;
+  if (doc.type === null) {
+    doc.create({ content: '' });
+    return;
+  }
+});
 
-function startServer() {
-  // Create a web server to serve files and listen to WebSocket connections
-  var app = express();
-  app.use(express.static('public'));
-  var server = http.createServer(app);
+// Connect any incoming WebSocket connection to ShareDB
+var wss = new WebSocket.Server({server: server});
+wss.on('connection', function(ws, req) {
+  var stream = new WebSocketJSONStream(ws);
+  backend.listen(stream);
+});
 
-  // Connect any incoming WebSocket connection to ShareDB
-  var wss = new WebSocket.Server({server: server});
-  wss.on('connection', function(ws, req) {
-    var stream = new WebSocketJSONStream(ws);
-    backend.listen(stream);
-  });
-
-  server.listen(7873);
-  console.log('Listening on http://localhost:7873');
-}
+server.listen(7873);
+console.log('Listening on http://localhost:7873');
