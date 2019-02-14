@@ -19,7 +19,9 @@ var boydog = function(server) {
   doc.fetch(function(err) {
     if (err) throw err;
     if (doc.type === null) {
-      doc.create({ content: 'abc123' });
+      doc.create({ content: 'abc123' }, () => {
+        console.log("created");
+      });
       return;
     }
   });
@@ -39,8 +41,29 @@ console.log("boy", boy);
 
 setInterval(function(){
   boy.doc.fetch();
-  console.log(`doc ${ boy.doc.version } - ${ boy.doc.data.content }`);
+  console.log(`doc ${ boy.doc.version } - ${ boy.doc.type.name } - ${ boy.doc.data.content }`);
 }, 1000);
+
+app.get("/test", function(req, res) {
+  boy.doc.fetch();
+  return res.json({ v: boy.doc.version, data: boy.doc.data });
+});
+
+app.get("/testChange", function(req, res) {
+  boy.doc.fetch();
+  
+  var op = [{ p: ['content'], t: 'text0', o: [{ p: 0, i: 'XYZ' }] }];
+  boy.doc.submitOp(op, (error) => {
+      if (error) {
+          console.error("err", error);
+      } else {
+          console.log('success');
+      }
+  });
+        
+        
+  return res.json({ change: "ok" });
+});
 
 server.listen(7873);
 console.log('Listening on http://localhost:7873');
