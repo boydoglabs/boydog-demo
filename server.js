@@ -35,6 +35,6 @@ function startServer() {
     backend.listen(stream);
   });
 
-  server.listen(8080);
-  console.log('Listening on http://localhost:8080');
+  server.listen(7873);
+  console.log('Listening on http://localhost:7873');
 }
