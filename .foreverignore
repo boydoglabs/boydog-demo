@@ -1,0 +1,2 @@
+# Restart only when js files are changed.
+!*.js

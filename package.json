@@ -4,9 +4,9 @@
   "description": "A simple client/server app using ShareDB and WebSockets",
   "main": "server.js",
   "scripts": {
+    "start": "forever --verbose --uid \"boydog-remake-demo\" -w ./server.js",
     "build": "browserify client-library.js -o public/boydog-client.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "BoyDog",
   "contributors": [

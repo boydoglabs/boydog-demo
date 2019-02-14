@@ -25,7 +25,7 @@ function createDoc(callback) {
 function startServer() {
   // Create a web server to serve files and listen to WebSocket connections
   var app = express();
-  app.use(express.static('static'));
+  app.use(express.static('public'));
   var server = http.createServer(app);
 
   // Connect any incoming WebSocket connection to ShareDB
