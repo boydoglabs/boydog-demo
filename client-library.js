@@ -1,5 +1,5 @@
-var shareDB = require('sharedb/lib/client');
-var stringBinding = require('sharedb-string-binding');
+const shareDB = require('sharedb/lib/client');
+const stringBinding = require('sharedb-string-binding');
 const reconnectingWebSocket = require('reconnecting-websocket');
 
 var boydog = function(client) {
