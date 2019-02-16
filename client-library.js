@@ -1,5 +1,22 @@
 var shareDB = require('sharedb/lib/client');
 var stringBinding = require('sharedb-string-binding');
-const rWebSocket = require('reconnecting-websocket');
+const reconnectingWebSocket = require('reconnecting-websocket');
 
-window.dog = { shareDB, stringBinding, rWebSocket };
+var boydog = function(client) {
+  if (!client) client = window.location.host;
+  let socket = new reconnectingWebSocket('ws://' + client);
+  let connection = new shareDB.Connection(socket);
+
+  // Create local Doc instance mapped to 'examples' collection document with id 'textarea'
+  let element = document.querySelector('input');
+  let doc = connection.get('examples', 'randomABC');
+  doc.subscribe(function(err) {
+    if (err) throw err;
+    
+    let binding = new stringBinding(element, doc, ['content']);
+    binding.setup();
+  });
+}
+
+window.boydog = boydog;
+

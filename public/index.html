@@ -9,21 +9,9 @@
 
 <script src="boydog-client.js"></script>
 <script>
-  var sharedb = window.dog.shareDB;
-  var rWebSocket = window.dog.rWebSocket;
-  var StringBinding = window.dog.stringBinding;
+
+  //BoyDog client module
+  //var boydog = boydog(client);
   
-  var socket = new rWebSocket('ws://' + window.location.host);
-  var connection = new sharedb.Connection(socket);
-
-  var element = document.querySelector('input');
-
-  // Create local Doc instance mapped to 'examples' collection document with id 'textarea'
-  var doc = connection.get('examples', 'randomABC');
-  doc.subscribe(function(err) {
-    if (err) throw err;
-    
-    var binding = new StringBinding(element, doc, ['content']);
-    binding.setup();
-  });
+  boydog();
 </script>

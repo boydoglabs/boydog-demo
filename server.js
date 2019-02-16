@@ -4,7 +4,7 @@ var app = express();
 app.use(express.static('public'));
 var server = http.createServer(app);
 
-//BoyDog module
+//BoyDog server module
 var boydog = function(server) {
   var ShareDB = require('sharedb');
   var WebSocket = require('ws');

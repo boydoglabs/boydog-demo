@@ -1,9 +1,27 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var shareDB = require('sharedb/lib/client');
 var stringBinding = require('sharedb-string-binding');
-const rWebSocket = require('reconnecting-websocket');
+const reconnectingWebSocket = require('reconnecting-websocket');
 
-window.dog = { shareDB, stringBinding, rWebSocket };
+var boydog = function(client) {
+  if (!client) client = window.location.host;
+  let socket = new reconnectingWebSocket('ws://' + client);
+  let connection = new shareDB.Connection(socket);
+
+  // Create local Doc instance mapped to 'examples' collection document with id 'textarea'
+  let element = document.querySelector('input');
+  let doc = connection.get('examples', 'randomABC');
+  doc.subscribe(function(err) {
+    if (err) throw err;
+    
+    let binding = new stringBinding(element, doc, ['content']);
+    binding.setup();
+  });
+}
+
+window.boydog = boydog;
+
+
 },{"reconnecting-websocket":9,"sharedb-string-binding":10,"sharedb/lib/client":13}],2:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
