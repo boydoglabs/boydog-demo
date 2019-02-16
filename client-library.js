@@ -3,6 +3,8 @@ const stringBinding = require('sharedb-string-binding');
 const reconnectingWebSocket = require('reconnecting-websocket');
 
 var boydog = function(client) {
+  var scope = {};
+  
   if (!client) client = window.location.host;
   let socket = new reconnectingWebSocket('ws://' + client);
   let connection = new shareDB.Connection(socket);
@@ -16,7 +18,13 @@ var boydog = function(client) {
     let binding = new stringBinding(element, doc, ['content']);
     binding.setup();
   });
+  
+  /*//Working event
+  doc.on("op", (o, s) => {
+    console.log("op", o, s);
+  })*/
+  
+  return { scope };
 }
 
 window.boydog = boydog;
-
