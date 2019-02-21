@@ -3,38 +3,7 @@ var express = require('express');
 var app = express();
 app.use(express.static('public'));
 var server = http.createServer(app);
-
-//BoyDog server module
-var boydog = function(server) {
-  var ShareDB = require('sharedb');
-  var WebSocket = require('ws');
-  var WebSocketJSONStream = require('websocket-json-stream');
-  
-  var scope = {};
-
-  var backend = new ShareDB();
-  var connection = backend.connect();
-
-  var doc = connection.get('examples', 'randomABC');
-  doc.fetch(function(err) {
-    if (err) throw err;
-    if (doc.type === null) {
-      doc.create({ content: 'abc123' }, () => {
-        console.log("created");
-      });
-      return;
-    }
-  });
-
-  // Connect any incoming WebSocket connection to ShareDB
-  var wss = new WebSocket.Server({ server });
-  wss.on('connection', function(ws, req) {
-    var stream = new WebSocketJSONStream(ws);
-    backend.listen(stream);
-  });
-  
-  return { doc };
-}
+var boydog = require('./dev_modules/boydog/boydog.js');
 
 var boy = boydog(server);
 console.log("boy", boy);
@@ -42,7 +11,7 @@ console.log("boy", boy);
 setInterval(function(){
   boy.doc.fetch();
   console.log(`doc ${ boy.doc.version } - ${ boy.doc.type.name } - ${ boy.doc.data.content }`);
-}, 1000);
+}, 10000);
 
 app.get("/test", function(req, res) {
   boy.doc.fetch();
