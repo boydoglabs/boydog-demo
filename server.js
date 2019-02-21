@@ -3,7 +3,8 @@ var express = require('express');
 var app = express();
 app.use(express.static('public'));
 var server = http.createServer(app);
-var boydog = require('./dev_modules/boydog/boydog.js');
+//var boydog = require('./dev_modules/boydog/boydog.js'); //For development
+var boydog = require('boydog');
 
 var boy = boydog(server);
 console.log("boy", boy);

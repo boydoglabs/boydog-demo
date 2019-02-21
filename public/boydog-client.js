@@ -4,7 +4,7 @@ const stringBinding = require('sharedb-string-binding');
 const reconnectingWebSocket = require('reconnecting-websocket');
 
 var boydog = function(client) {
-  var scope = {};
+  var scope = "html";
   
   if (!client) client = window.location.host;
   let socket = new reconnectingWebSocket('ws://' + client);
@@ -29,8 +29,6 @@ var boydog = function(client) {
 }
 
 window.boydog = boydog;
-
-
 },{"reconnecting-websocket":9,"sharedb-string-binding":10,"sharedb/lib/client":13}],2:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //

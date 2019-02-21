@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "forever --verbose --uid \"boydog-remake-demo\" -w ./server.js",
-    "build": "browserify client-library.js -o public/boydog-client.js",
+    "build": "browserify client-library.js -o public/boydog-client.js && npm install ./dev_modules/boydog/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "BoyDog",
@@ -14,12 +14,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "express": "^4.14.0",
-    "reconnecting-websocket": "^3.0.3",
-    "sharedb": "^1.0.0-beta",
-    "sharedb-string-binding": "^1.0.0",
-    "websocket-json-stream": "^0.0.1",
-    "ws": "^1.1.0"
+    "boydog": "file:dev_modules/boydog",
+    "express": "^4.14.0"
   },
   "devDependencies": {
     "browserify": "^13.0.1"
