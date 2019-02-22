@@ -1,15 +1,13 @@
 var http = require('http');
 var express = require('express');
 var app = express();
-app.use(express.static('public'));
 var server = http.createServer(app);
-//var boydog = require('./dev_modules/boydog/boydog.js'); //For development
 var boydog = require('boydog');
-
 var boy = boydog(server);
-console.log("boy", boy);
 
-setInterval(function(){
+app.use(express.static('public'));
+
+setInterval(function() {
   boy.doc.fetch();
   console.log(`doc ${ boy.doc.version } - ${ boy.doc.type.name } - ${ boy.doc.data.content }`);
 }, 10000);
@@ -24,14 +22,14 @@ app.get("/testChange", function(req, res) {
   
   var op = [{ p: ['content'], t: 'text0', o: [{ p: 0, i: 'XYZ' }] }];
   boy.doc.submitOp(op, (error) => {
-      if (error) {
-          console.error("err", error);
-      } else {
-          console.log('success');
-      }
+    if (error) {
+      console.error("err", error);
+    } else {
+      console.log('success');
+    }
   });
-        
-        
+  
+  
   return res.json({ change: "ok" });
 });
 

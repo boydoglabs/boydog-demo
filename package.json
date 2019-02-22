@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "forever --verbose --uid \"boydog-remake-demo\" -w ./server.js",
-    "build": "browserify client-library.js -o public/boydog-client.js && npm install ./dev_modules/boydog/",
+    "build": "browserify ./dev_modules/boydog-client/boydog-client.js -o ./public/boydog-client.js && npm install --no-save ./dev_modules/boydog/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "BoyDog",
@@ -14,7 +14,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "boydog": "file:dev_modules/boydog",
+    "boydog": "^1.1.6",
     "express": "^4.14.0"
   },
   "devDependencies": {

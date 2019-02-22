@@ -4,13 +4,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 
 <div id="container">
-  <input id="inp" />
+  <input id="inp" dog-value="randomABC"/>
 </div>
 
 <script src="boydog-client.js"></script>
 <script>
   //BoyDog client module
   var dog = boydog();
+  
+  dog.attach();
   
   console.log("dog.scope", dog.scope);
 </script>
