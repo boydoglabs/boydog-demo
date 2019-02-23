@@ -19,8 +19,6 @@ describe("single user testing", function() {
         done();
       },
       function(selector, keyCode, done) {
-        // focus, press, blur
-        // TODO: clean me up
         return this.evaluate_now(
           selector => document.querySelector(selector).focus(),
           () =>
