@@ -1,4 +1,5 @@
 const Nightmare = require("nightmare");
+const assert = require("assert");
 
 describe("single user testing", function() {
   let nightmare = null;
@@ -40,7 +41,6 @@ describe("single user testing", function() {
       //.on('console', (log, msg) => { console.log(msg) }) // Use this to show console.log's from inside the browser into the Node console
       .viewport(800, 600)
       .goto("http://localhost:7873/")
-      .inject("js", "public/chai.js")
       .wait();
   });
 
@@ -59,8 +59,8 @@ describe("single user testing", function() {
         let a = document.querySelector('input[dog-value="word"]').value;
         let b = document.querySelector('[dog-html="word"]').innerHTML;
 
-        chai.assert.equal(a, b);
-        chai.assert.equal(a, "");
+        assert(a === b);
+        assert(a === "");
       })
       .end()
       .then(() => {
@@ -82,7 +82,6 @@ describe("multiple simultaneous user testing", function() {
     nightmareA
       .viewport(800, 600)
       .goto("http://localhost:7873/")
-      .inject("js", "public/chai.js")
       .wait()
       .click('input[dog-value="word"]')
       .type(
@@ -99,8 +98,8 @@ describe("multiple simultaneous user testing", function() {
         let a = document.querySelector('input[dog-value="word"]').value;
         let b = document.querySelector('input[dog-value="number"]').value;
 
-        chai.assert.equal(a, "user A editing here");
-        chai.assert.equal(b, "0987654321");
+        assert.equal(a === "user A editing here");
+        assert.equal(b === "0987654321");
       })
       .wait(3000)
       .end()
@@ -112,7 +111,6 @@ describe("multiple simultaneous user testing", function() {
     nightmareB
       .viewport(800, 600)
       .goto("http://localhost:7873/")
-      .inject("js", "public/chai.js")
       .wait()
       .click('input[dog-value="number"]')
       .type(
