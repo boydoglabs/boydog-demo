@@ -6,7 +6,8 @@
   "scripts": {
     "start": "forever --verbose --uid \"boydog-remake-demo\" -w ./server.js",
     "build": "browserify ./dev_modules/boydog-client/boydog-client.js -o ./public/boydog-client.js && npm install --no-save ./dev_modules/boydog/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write \"server.js\" \"./test/test.js\"",
+    "test": "mocha"
   },
   "author": "BoyDog",
   "contributors": [
@@ -18,6 +19,8 @@
     "express": "^4.14.0"
   },
   "devDependencies": {
-    "browserify": "^13.0.1"
+    "browserify": "^13.0.1",
+    "mocha": "^6.0.1",
+    "nightmare": "^3.0.1"
   }
 }
