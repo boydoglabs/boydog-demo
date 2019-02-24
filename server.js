@@ -7,15 +7,17 @@ var boydog = require("boydog");
 var boy = boydog(server);
 
 var scope = {
-  word: "abc"
+  word: "abc",
+  title: "qwe",
+  random: "iop",
 };
 
 boy.attach(scope);
 
 app.use(express.static("public"));
 
-app.get("/reload", function(req, res) {
-  boy.reload();
+app.get("/restart", function(req, res) {
+  boy.restart();
   
   return res.json({ ok: true });
 });
