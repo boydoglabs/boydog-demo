@@ -17,10 +17,10 @@ app.use(express.static("public"));
 app.get("/reload", function(req, res) {
   boy.reload();
   return res.json({ ok: true });
-})
+});
 
 app.get("/test", function(req, res) {
-  boy.doc.fetch((err) => {
+  boy.doc.fetch(err => {
     return res.json({ v: boy.doc.version, data: boy.doc.data });
   });
 });
@@ -28,15 +28,15 @@ app.get("/test", function(req, res) {
 app.get("/testChange", function(req, res) {
   boy.doc.fetch(() => {
     var op = [{ p: ["content"], t: "text0", o: [{ p: 0, i: "XYZ" }] }];
-      boy.doc.submitOp(op, error => {
-        if (error) {
-          console.error("err", error);
-        } else {
-          console.log("success");
-        }
-      });
+    boy.doc.submitOp(op, error => {
+      if (error) {
+        console.error("err", error);
+      } else {
+        console.log("success");
+      }
+    });
 
-      return res.json({ change: "ok" });
+    return res.json({ change: "ok" });
   });
 });
 
