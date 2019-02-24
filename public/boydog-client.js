@@ -1,47 +1,48 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
 
-const shareDB = require('sharedb/lib/client');
-const stringBinding = require('sharedb-string-binding');
-const reconnectingWebSocket = require('reconnecting-websocket');
-const utils = require('./utils.js');
+const shareDB = require("sharedb/lib/client");
+const stringBinding = require("sharedb-string-binding");
+const reconnectingWebSocket = require("reconnecting-websocket");
+const utils = require("./utils.js");
 
 var boydog = function(client) {
   var scope;
-  
+
   if (!client) client = window.location.host;
-  let socket = new reconnectingWebSocket('ws://' + client);
+  let socket = new reconnectingWebSocket("ws://" + client);
   let connection = new shareDB.Connection(socket);
 
   //Create local Doc instance mapped to 'examples' collection document with id 'textarea'
-  let element = document.querySelector('input');
-  let doc = connection.get('examples', 'randomABC');
+  let element = document.querySelector("input");
+  let doc = connection.get("examples", "randomABC");
   doc.subscribe(function(err) {
     if (err) throw err;
-    
-    let binding = new stringBinding(element, doc, ['content']);
+
+    let binding = new stringBinding(element, doc, ["content"]);
     binding.setup();
   });
-  
+
   /*//Working event example
   doc.on("op", (o, s) => {
     console.log("op", o, s);
   })*/
-  
+
   var reload = function() {
     console.log("reloading boydog", utils);
     utils.normalize();
-  }
-  
+  };
+
   var attach = function(_scope) {
     scope = _scope || "html";
     reload();
-  }
-  
+  };
+
   return { scope, attach };
-}
+};
 
 window.boydog = boydog;
+
 },{"./utils.js":26,"reconnecting-websocket":9,"sharedb-string-binding":10,"sharedb/lib/client":13}],2:[function(require,module,exports){
 /* MIT https://github.com/kenwheeler/cash */
 (function(){
@@ -22232,9 +22233,15 @@ TextDiffBinding.prototype.update = function() {
 },{}],26:[function(require,module,exports){
 "use strict";
 
-const $ = require('cash-dom');
-const _ = require('lodash');
-const allAttributes = ["dog-id", "dog-class", "dog-value", "dog-html", "dog-click"];
+const $ = require("cash-dom");
+const _ = require("lodash");
+const allAttributes = [
+  "dog-id",
+  "dog-class",
+  "dog-value",
+  "dog-html",
+  "dog-click"
+];
 
 //Normalize string like "address.gps.lat" to "address['gps']['lat']" to avoid issues when trying to access fields like "user.2.name"
 var normalizeAttrString = function(attr) {
@@ -22246,44 +22253,45 @@ var normalizeAttrString = function(attr) {
 
       if (item[0] === "#" || item[0] === ".") return item;
 
-      return `'${ item }'`;
+      return `'${item}'`;
     });
 
-    attr = attr.shift() + `[${ attr.join("][") }]`;
+    attr = attr.shift() + `[${attr.join("][")}]`;
   } else {
     attr = attr.shift();
   }
-  
+
   return attr;
-}
+};
 
 //Get All [dog-value, dog-id, etc] as DOM elements
 var getDogDOMElements = function() {
   let found = {};
-  
-  allAttributes.forEach((attr) => {
-    let el = $(`[${ attr }]`);
+
+  allAttributes.forEach(attr => {
+    let el = $(`[${attr}]`);
     if (el.length === 0) return;
     found[attr] = el;
-  })
-  
+  });
+
   return found;
-}
+};
 
 //Normalize all dog elements paths
 var normalize = function() {
   let els = getDogDOMElements();
-  
-  Object.keys(els).forEach((attrName) => {
+
+  Object.keys(els).forEach(attrName => {
     els[attrName].each((k, el) => {
       let newAttr = normalizeAttrString($(el).attr(attrName));
-      
+
       $(el).attr(attrName, newAttr);
     });
   });
-}
+};
 
 module.exports = { normalize, normalizeAttrString, getDogDOMElements };
+
 },{"cash-dom":2,"lodash":3}],27:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
