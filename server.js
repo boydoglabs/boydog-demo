@@ -2,7 +2,7 @@ var http = require("http");
 var express = require("express");
 var app = express();
 var server = http.createServer(app);
-
+var port = 7873;
 var boydog = require("boydog");
 var boy = boydog(server);
 
@@ -16,6 +16,7 @@ app.use(express.static("public"));
 
 app.get("/reload", function(req, res) {
   boy.reload();
+  
   return res.json({ ok: true });
 });
 
@@ -40,5 +41,5 @@ app.get("/testChange", function(req, res) {
   });
 });
 
-server.listen(7873);
-console.log("Listening on http://localhost:7873");
+server.listen(port);
+console.log("Listening on http://localhost:" + port);
