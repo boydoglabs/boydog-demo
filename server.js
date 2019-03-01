@@ -6,6 +6,16 @@ var port = 7873;
 var boydog = require("boydog");
 var boy = boydog(server);
 
+//Boydog init
+var scope = {
+  word: "abc",
+  title: "qwe",
+  random: "iop",
+  subject: "starting, subject",
+};
+
+boy.attach(scope);
+
 app.use(express.static("public"));
 
 app.get("/restart", function(req, res) {
@@ -14,18 +24,10 @@ app.get("/restart", function(req, res) {
   return res.json({ ok: true });
 });
 
-app.get("/test", function(req, res) {
-  return res.json({ test: "ok" });
+app.get("/scope", function(req, res) {
+  
+  return res.json({ val: scope.word });
 });
-
-//Boydog init
-var scope = {
-  word: "abc",
-  title: "qwe",
-  random: "iop"
-};
-
-boy.attach(scope);
 
 server.listen(port);
 console.log("Listening on http://localhost:" + port);
