@@ -8,26 +8,14 @@ var boy = boydog(server);
 
 //Boydog init
 var scope = {
-  word: "abc",
-  title: "qwe",
-  random: "iop",
-  subject: "starting, subject",
+  word: "starting word",
+  title: "initial title",
+  subject: "random subject"
 };
 
 boy.attach(scope);
 
 app.use(express.static("public"));
-
-app.get("/restart", function(req, res) {
-  boy.restart();
-
-  return res.json({ ok: true });
-});
-
-app.get("/scope", function(req, res) {
-  
-  return res.json({ val: scope.word });
-});
 
 server.listen(port);
 console.log("Listening on http://localhost:" + port);
