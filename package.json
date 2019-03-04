@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "forever --verbose --uid \"boydog-remake-demo\" -w ./server.js",
-    "format": "prettier --write \"server.js\" \"./test/test.js\"",
-    "dev": "npm install --no-save ./dev_modules/boydog/",
+    "format": "prettier --write \"./server.js\" \"./test/test.js\"",
+    "dev": "npm install --no-save ./dev_modules/boydog/ ./dev_modules/boydog-client/",
     "test": "mocha"
   },
   "author": "BoyDog",
