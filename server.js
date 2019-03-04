@@ -2,7 +2,7 @@ var http = require("http");
 var express = require("express");
 var app = express();
 var server = http.createServer(app);
-var port = 7873;
+var port = 3090;
 var boydog = require("boydog");
 var boy = boydog(server);
 
