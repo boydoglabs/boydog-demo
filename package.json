@@ -1,15 +1,15 @@
 {
-  "name": "sharedb-example-textarea",
-  "version": "0.0.1",
-  "description": "A simple client/server app using ShareDB and WebSockets",
+  "name": "boydog-demo",
+  "version": "0.0.2",
+  "description": "A boilerplate for BoyDog projects",
   "main": "server.js",
   "scripts": {
-    "start": "forever --verbose --uid \"boydog-remake-demo\" -w ./server.js",
+    "start": "forever --verbose --uid \"boydog-demo\" -w ./server.js",
     "format": "prettier --write \"./server.js\" \"./test/test.js\"",
     "dev": "npm install --no-save ./dev_modules/boydog/ ./dev_modules/boydog-client/",
     "test": "mocha"
   },
-  "author": "BoyDog",
+  "author": "BoyDog (boy.dog)",
   "contributors": [
     "BoyDog"
   ],
