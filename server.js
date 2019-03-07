@@ -10,7 +10,11 @@ var boy = boydog(server);
 var scope = {
   word: "starting word",
   title: "initial title",
-  subject: "random subject"
+  subject: "random subject",
+  data: {
+    name: "John Doe",
+    address: "7431 Henry Smith Rd. Coventry, RI 02816"
+  }
 };
 
 boy.attach(scope);
