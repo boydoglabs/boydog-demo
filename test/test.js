@@ -1,72 +1,4 @@
 const Nightmare = require("nightmare");
-const assert = require("assert");
-
-describe("single user testing", function() {
-  let nightmare = null;
-
-  this.timeout("30s");
-
-  beforeEach(() => {
-    //Register press keyboard action (available buttons: https://github.com/electron/electron/blob/master/docs/api/accelerator.md)
-    Nightmare.action(
-      "press",
-      function(name, options, parent, win, renderer, done) {
-        parent.respondTo("press", function(keyCode, done) {
-          win.webContents.sendInputEvent({ type: "keyDown", keyCode: keyCode });
-          win.webContents.sendInputEvent({ type: "keyUp", keyCode: keyCode });
-          done();
-        });
-        done();
-      },
-      function(selector, keyCode, done) {
-        return this.evaluate_now(
-          selector => document.querySelector(selector).focus(),
-          () =>
-            this.child.call("press", keyCode, () => {
-              this.evaluate_now(
-                selector => document.querySelector(selector).blur(),
-                () => done(),
-                selector
-              );
-            }),
-          selector
-        );
-      }
-    );
-
-    nightmare = new Nightmare({ show: true, x: 0, y: 0 });
-    nightmare
-      //.on('console', (log, msg) => { console.log(msg) }) // Use this to show console.log's from inside the browser into the Node console
-      .viewport(800, 600)
-      .goto("http://localhost:7873/")
-      .wait();
-  });
-
-  it('should clear input "word"', done => {
-    nightmare
-      .click('input[dog-value="word"]')
-      .type(
-        'input[dog-value="word"]',
-        "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
-      ) //Backspace
-      .type(
-        'input[dog-value="word"]',
-        "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
-      ) //Delete
-      .evaluate(() => {
-        let a = document.querySelector('input[dog-value="word"]').value;
-        let b = document.querySelector('[dog-html="word"]').innerHTML;
-
-        assert(a === b);
-        assert(a === "");
-      })
-      .end()
-      .then(() => {
-        done();
-      })
-      .catch(done);
-  });
-});
 
 describe("multiple simultaneous user testing", function() {
   let nightmare = null;
@@ -75,11 +7,11 @@ describe("multiple simultaneous user testing", function() {
 
   it("should collaborate on two different elements", done => {
     nightmareA = new Nightmare({ show: true, x: 0, y: 0 });
-    nightmareB = new Nightmare({ show: true, x: 0, y: 600 });
+    nightmareB = new Nightmare({ show: true, x: 600, y: 0 });
 
     nightmareA
-      .viewport(800, 600)
-      .goto("http://localhost:7873/")
+      .viewport(600, 100)
+      .goto("http://localhost:3090/")
       .wait()
       .click('input[dog-value="word"]')
       .type(
@@ -91,39 +23,35 @@ describe("multiple simultaneous user testing", function() {
         "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
       ) //Delete
       .type('input[dog-value="word"]', "user A editing here")
-      .wait(250)
+      .end()
+      .catch(done);
+
+    nightmareB
+      .viewport(600, 100)
+      .goto("http://localhost:3090/")
+      .wait()
+      .click('input[dog-value="subject"]')
+      .type(
+        'input[dog-value="subject"]',
+        "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
+      ) //Backspace
+      .type(
+        'input[dog-value="subject"]',
+        "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
+      ) //Delete
+      .type('input[dog-value="subject"]', "user B editing here")
+      .wait(1000)
       .evaluate(() => {
         let a = document.querySelector('input[dog-value="word"]').value;
-        let b = document.querySelector('input[dog-value="number"]').value;
+        let b = document.querySelector('input[dog-value="subject"]').value;
 
-        assert.equal(a === "user A editing here");
-        assert.equal(b === "0987654321");
+        chai.assert(a === "user A editing here");
+        chai.assert(b === "user B editing here");
       })
-      .wait(3000)
       .end()
       .then(() => {
         done();
       })
-      .catch(done);
-
-    nightmareB
-      .viewport(800, 600)
-      .goto("http://localhost:7873/")
-      .wait()
-      .click('input[dog-value="number"]')
-      .type(
-        'input[dog-value="number"]',
-        "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
-      ) //Backspace
-      .type(
-        'input[dog-value="number"]',
-        "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
-      ) //Delete
-      .type('input[dog-value="number"]', "0987654321")
-      .wait(1500)
-      .type('input[dog-value="number"]', "123") //Write just any data
-      .end()
-      .then()
       .catch(done);
   });
 });
