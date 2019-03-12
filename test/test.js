@@ -1,20 +1,42 @@
 const Nightmare = require("nightmare");
 const url = "http://localhost:3090/";
 
-describe("multiple simultaneous user testing", function() {
+describe("single user testing", function() {
   let nightmare = null;
-
   this.timeout("30s");
-  
+
+  beforeEach(() => {
+    nightmare = new Nightmare({ show: false, x: 0, y: 0 });
+    nightmare
+      .viewport(600, 100)
+      .goto(url)
+      .wait();
+  });
+
+  it("should load entire page", done => {
+    nightmare
+      .wait("footer.footer")
+      .end()
+      .then(() => {
+        done();
+      })
+      .catch(done);
+  });
+});
+
+xdescribe("multiple simultaneous user testing", function() {
+  let nightmare = null;
+  this.timeout("30s");
+
   beforeEach(() => {
     nightmareA = new Nightmare({ show: false, x: 0, y: 0 });
     nightmareB = new Nightmare({ show: false, x: 600, y: 0 });
-    
+
     nightmareA
       .viewport(600, 100)
       .goto(url)
       .wait();
-      
+
     nightmareB
       .viewport(600, 100)
       .goto(url)
@@ -61,7 +83,7 @@ describe("multiple simultaneous user testing", function() {
       })
       .catch(done);
   });
-  
+
   it("should update a parent dog-value", done => {
     nightmareA
       .click('input[dog-value="data>name"]')
@@ -76,7 +98,7 @@ describe("multiple simultaneous user testing", function() {
       .type('input[dog-value="data>name"]', "first")
       .end()
       .catch(done);
-    
+
     nightmareB
       .click('input[dog-value="data>address"]')
       .type(
@@ -102,5 +124,5 @@ describe("multiple simultaneous user testing", function() {
         done();
       })
       .catch(done);
-  })
+  });
 });
