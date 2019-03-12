@@ -87,7 +87,7 @@ describe("multiple simultaneous user testing", function() {
         'input[dog-value="data>address"]',
         "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
       ) //Delete
-      .type('input[dog-value="data>address"]', "user B editing here")
+      .type('input[dog-value="data>address"]', "second")
       .wait(1000)
       .evaluate(() => {
         let a = document.querySelector('input[dog-value="data"]').value;
