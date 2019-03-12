@@ -103,46 +103,4 @@ describe("multiple simultaneous user testing", function() {
       })
       .catch(done);
   })
-  
-  it("should update dog-html", done => {
-    nightmareA
-      .click('input[dog-value="data>name"]')
-      .type(
-        'input[dog-value="data>name"]',
-        "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
-      ) //Backspace
-      .type(
-        'input[dog-value="data>name"]',
-        "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
-      ) //Delete
-      .type('input[dog-value="data>name"]', "first")
-      .end()
-      .catch(done);
-    
-    nightmareB
-      .click('input[dog-value="data>address"]')
-      .type(
-        'input[dog-value="data>address"]',
-        "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
-      ) //Backspace
-      .type(
-        'input[dog-value="data>address"]',
-        "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
-      ) //Delete
-      .type('input[dog-value="data>address"]', "user B editing here")
-      .wait(1000)
-      .evaluate(() => {
-        let a = document.querySelector('input[dog-value="data"]').value;
-        let b = document.querySelector('input[dog-value="data>name"]').value;
-        let c = document.querySelector('input[dog-value="data>address"]').value;
-
-        chai.assert.include(a, b);
-        chai.assert.include(a, c);
-      })
-      .end()
-      .then(() => {
-        done();
-      })
-      .catch(done);
-  })
 });
