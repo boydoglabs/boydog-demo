@@ -3,7 +3,7 @@ const url = "http://localhost:3090/";
 
 describe("single user testing", function() {
   let nightmare = null;
-  this.timeout("30s");
+  this.timeout("180s");
 
   beforeEach(() => {
     nightmare = new Nightmare({ show: false, x: 0, y: 0 });
