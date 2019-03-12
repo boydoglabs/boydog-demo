@@ -1,18 +1,28 @@
 const Nightmare = require("nightmare");
+const url = "http://localhost:3090/";
 
 describe("multiple simultaneous user testing", function() {
   let nightmare = null;
 
   this.timeout("30s");
-
-  it("should collaborate on two different elements", done => {
+  
+  beforeEach(() => {
     nightmareA = new Nightmare({ show: true, x: 0, y: 0 });
     nightmareB = new Nightmare({ show: true, x: 600, y: 0 });
-
+    
     nightmareA
       .viewport(600, 100)
-      .goto("http://localhost:3090/")
-      .wait()
+      .goto(url)
+      .wait();
+      
+    nightmareB
+      .viewport(600, 100)
+      .goto(url)
+      .wait();
+  });
+
+  it("should collaborate on two different elements", done => {
+    nightmareA
       .click('input[dog-value="word"]')
       .type(
         'input[dog-value="word"]',
@@ -27,9 +37,6 @@ describe("multiple simultaneous user testing", function() {
       .catch(done);
 
     nightmareB
-      .viewport(600, 100)
-      .goto("http://localhost:3090/")
-      .wait()
       .click('input[dog-value="subject"]')
       .type(
         'input[dog-value="subject"]',
