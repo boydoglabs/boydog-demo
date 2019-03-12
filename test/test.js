@@ -7,8 +7,8 @@ describe("multiple simultaneous user testing", function() {
   this.timeout("30s");
   
   beforeEach(() => {
-    nightmareA = new Nightmare({ show: true, x: 0, y: 0 });
-    nightmareB = new Nightmare({ show: true, x: 600, y: 0 });
+    nightmareA = new Nightmare({ show: false, x: 0, y: 0 });
+    nightmareB = new Nightmare({ show: false, x: 600, y: 0 });
     
     nightmareA
       .viewport(600, 100)
