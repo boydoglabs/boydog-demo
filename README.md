@@ -1,6 +1,7 @@
 # boydog-demo
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/boydoglabs/boydog-demo)
+[![Build Status](https://travis-ci.org/boydoglabs/boydog-demo.png?branch=master)](https://travis-ci.org/boydoglabs/boydog-demo)
 
 A demo page running on BoyDog (real-time collaborative web framework). This is basically the landing page at www.boy.dog.
 You can use this as your starting boilerplate for your RTC projects.
