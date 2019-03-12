@@ -13,7 +13,7 @@ var scope = {
   subject: "random subject",
   data: {
     name: "John Doe",
-    address: "7431 Henry Smith Rd. Coventry, RI 02816"
+    address: "74 Henry Road"
   }
 };
 
