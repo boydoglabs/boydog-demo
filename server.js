@@ -21,5 +21,16 @@ boy.attach(scope);
 
 app.use(express.static("public"));
 
+
+//Testing routes
+app.get("/testScopeChangeFromServer", (req, res) => {
+  
+  scope.word = "Changes";
+  scope.title = "From";
+  scope.subject = "Server";
+  
+  return res.json({ done: "Some fields have been changed from the server. These values should be now visible to all users." });
+});
+
 server.listen(port);
 console.log("Listening on http://localhost:" + port);

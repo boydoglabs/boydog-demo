@@ -3,7 +3,7 @@ const url = "http://localhost:3090/";
 
 describe("single user testing", function() {
   let nightmare = null;
-  this.timeout("180s");
+  this.timeout("30s");
 
   beforeEach(() => {
     nightmare = new Nightmare({ show: false, x: 0, y: 0 });
@@ -22,9 +22,29 @@ describe("single user testing", function() {
       })
       .catch(done);
   });
+  
+  it("should load changes from server", done => {
+    nightmare
+      .goto(url + "testScopeChangeFromServer")
+      .wait()
+      .goto(url)
+      .evaluate(() => {
+        let a = document.querySelector('input[dog-value="word"]').value;
+        let b = document.querySelector('input[dog-value="title"]').value;
+        let c = document.querySelector('input[dog-value="subject"]').value;
+        chai.assert(a === "Changes");
+        chai.assert(b === "From");
+        chai.assert(c === "Server");
+      })
+      .end()
+      .then(() => {
+        done();
+      })
+      .catch(done);
+  });
 });
 
-xdescribe("multiple simultaneous user testing", function() {
+describe("simultaneous user testing", function() {
   let nightmare = null;
   this.timeout("30s");
 
