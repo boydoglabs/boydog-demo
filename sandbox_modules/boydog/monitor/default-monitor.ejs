@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>boydog default-monitor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+  </head>
+  <style>
+    ul, li {
+      margin: 5px;
+    }
+  </style>
+  <body>
+    <div id="main">
+      <ul>
+        <% for(var i = 0; i < scopeArray.length; i++) { %>
+          <li><%= scopeArray[i] %> <input dog-value=<%= scopeArray[i] %> /></li>
+        <% } %>
+      </ul>
+    </div>
+    
+    <script src="/boydog-client"></script>
+    <script>
+      var dog = boydog();
+      dog.attach();
+    </script>
+  </body>
+</html>
