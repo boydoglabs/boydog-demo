@@ -1,4 +1,5 @@
 const Nightmare = require("nightmare");
+const assert = require('assert');
 const url = "http://localhost:3090/";
 
 describe("single user testing", function() {
@@ -13,11 +14,19 @@ describe("single user testing", function() {
       .wait();
   });
 
+  it("should pass", () => {
+      assert(1 === 1);
+  });
+  
+  it("should fail", () => {
+      assert(1 === 0);
+  });
+  
   it("should load entire page", done => {
     nightmare
       .wait("footer.footer")
       .end()
-      .then(() => {
+      .then((result) => {
         done();
       })
       .catch(done);
