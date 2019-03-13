@@ -17,6 +17,7 @@ describe("single user testing", function() {
       .evaluate(() => document.querySelector('.boydoglabs-link').innerText);
       
     assert(title.length);
+    
     await nightmare.end();
   });
   

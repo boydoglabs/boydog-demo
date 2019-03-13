@@ -74,7 +74,7 @@ module.exports = function(server) {
   });
 
   var restart = async function() {
-    console.warn("Restarting boy without Puppeteer");
+    console.warn("Restarting boy");
 
     let hasTitle = await monitor.title();
     if (!hasTitle) return;
@@ -214,8 +214,6 @@ module.exports = function(server) {
       );
       restart();
     })();
-    
-    restart();
   };
 
   return { scope, attach, restart };
