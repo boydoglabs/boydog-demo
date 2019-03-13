@@ -6,37 +6,21 @@ describe("single user testing", function() {
   let nightmare = null;
   this.timeout("30s");
 
-  beforeEach(() => {
+  beforeEach(async () => {
     nightmare = new Nightmare({ show: false, x: 0, y: 0 });
-    nightmare
-      .viewport(600, 100)
-      .goto(url)
-      .wait();
-  });
-
-  it("should pass", () => {
-      assert(1 === 1);
-  });
-  
-  it("should fail", () => {
-      assert(1 === 0);
+    await nightmare.viewport(600, 100);
   });
   
   it("should load entire page", async () => {
-    const title = await nightmare.evaluate(() => document.querySelector('.boydoglabs-link').innerText);
-    assert(title === "BoyDogLabs");
+    const title = await nightmare.goto(url)
+      .wait()
+      .evaluate(() => document.querySelector('.boydoglabs-link').innerText);
+      
+    assert(title.length);
     await nightmare.end();
-    
-    /*nightmare
-      .wait("footer.footer")
-      .end()
-      .then((result) => {
-        console.log("res", result);
-        done();
-      })
-      .catch(done);*/
   });
   
+  //TODO: Make async/await
   it("should load changes from server", done => {
     nightmare
       .goto(url + "testScopeChangeFromServer")
@@ -58,7 +42,7 @@ describe("single user testing", function() {
   });
 });
 
-xdescribe("simultaneous user testing", function() {
+describe("simultaneous user testing", function() {
   let nightmare = null;
   this.timeout("30s");
 
@@ -77,6 +61,7 @@ xdescribe("simultaneous user testing", function() {
       .wait();
   });
 
+  //TODO: Make async/await
   it("should collaborate on 2 dog-value's", done => {
     nightmareA
       .click('input[dog-value="word"]')
@@ -118,6 +103,7 @@ xdescribe("simultaneous user testing", function() {
       .catch(done);
   });
 
+  //TODO: Make async/await
   it("should update a parent dog-value", done => {
     nightmareA
       .click('input[dog-value="data>name"]')
