@@ -22,14 +22,19 @@ describe("single user testing", function() {
       assert(1 === 0);
   });
   
-  it("should load entire page", done => {
-    nightmare
+  it("should load entire page", async () => {
+    const title = await nightmare.evaluate(() => document.querySelector('.boydoglabs-link').innerText);
+    assert(title === "BoyDogLabs");
+    await nightmare.end();
+    
+    /*nightmare
       .wait("footer.footer")
       .end()
       .then((result) => {
+        console.log("res", result);
         done();
       })
-      .catch(done);
+      .catch(done);*/
   });
   
   it("should load changes from server", done => {
@@ -53,7 +58,7 @@ describe("single user testing", function() {
   });
 });
 
-describe("simultaneous user testing", function() {
+xdescribe("simultaneous user testing", function() {
   let nightmare = null;
   this.timeout("30s");
 
