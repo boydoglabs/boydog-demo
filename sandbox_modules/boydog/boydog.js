@@ -175,7 +175,7 @@ module.exports = function(server) {
                       fullPath,
                       v
                     );
-                    
+
                     return v;
                   },
                   get: v => {
@@ -205,7 +205,10 @@ module.exports = function(server) {
     scope = _scope;
 
     (async () => {
-      const browser = await puppeteer.launch({ args: ['--no-sandbox'], headless: true });
+      const browser = await puppeteer.launch({
+        args: ["--no-sandbox"],
+        headless: true
+      });
       monitor = await browser.newPage();
       await monitor.goto(
         `http://localhost:${

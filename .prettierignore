@@ -1,4 +1,9 @@
 public/
 node_modules/
-dev_modules/boydog-client/build/
-dev_modules/boydog-client/node_modules/
+
+sandbox_modules/boydog/node_modules/
+
+sandbox_modules/boydog-client/build/
+sandbox_modules/boydog-client/node_modules/
+
+git_modules/*

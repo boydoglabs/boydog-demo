@@ -1,5 +1,5 @@
 const Nightmare = require("nightmare");
-const assert = require('assert');
+const assert = require("assert");
 const url = "http://localhost:3090/";
 
 describe("single user testing", function() {
@@ -10,36 +10,38 @@ describe("single user testing", function() {
     nightmare = new Nightmare({ show: false, x: 0, y: 0 });
     await nightmare.viewport(600, 100);
   });
-  
+
   it("should load entire page", async () => {
-    const title = await nightmare.goto(url)
+    const title = await nightmare
+      .goto(url)
       .wait()
-      .evaluate(() => document.querySelector('.boydoglabs-link').innerText);
-      
+      .evaluate(() => document.querySelector(".boydoglabs-link").innerText);
+
     assert(title.length);
-    
+
     await nightmare.end();
   });
-  
-  //TODO: Make async/await
-  it("should load changes from server", done => {
-    nightmare
+
+  it("should load changes from server", async () => {
+    await nightmare
       .goto(url + "testScopeChangeFromServer")
       .wait()
-      .goto(url)
-      .evaluate(() => {
-        let a = document.querySelector('input[dog-value="word"]').value;
-        let b = document.querySelector('input[dog-value="title"]').value;
-        let c = document.querySelector('input[dog-value="subject"]').value;
-        chai.assert(a === "Changes");
-        chai.assert(b === "From");
-        chai.assert(c === "Server");
-      })
-      .end()
-      .then(() => {
-        done();
-      })
-      .catch(done);
+      .goto(url);
+    const a = nightmare.evaluate(() => {
+      document.querySelector('input[dog-value="word"]').value;
+    });
+    const b = nightmare.evaluate(() => {
+      document.querySelector('input[dog-value="title"]').value;
+    });
+    const c = nightmare.evaluate(() => {
+      document.querySelector('input[dog-value="subject"]').value;
+    });
+
+    assert(a === "Changes");
+    assert(b === "From");
+    assert(c === "Server");
+
+    await nightmare.end();
   });
 });
 
