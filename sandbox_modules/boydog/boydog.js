@@ -76,8 +76,8 @@ module.exports = function(server) {
   var restart = async function() {
     console.warn("Restarting boy without Puppeteer");
 
-    /*let hasTitle = await monitor.title();
-    if (!hasTitle) return;*/
+    let hasTitle = await monitor.title();
+    if (!hasTitle) return;
 
     if (!_.isPlainObject(scope))
       throw new Error("Scope must be a plain object.");
@@ -145,7 +145,7 @@ module.exports = function(server) {
                         _scope[parentPath] = JSON.stringify(scope[parentPath]);
                         let jsonV = _scope[parentPath];
 
-                        /*monitor.evaluate(
+                        monitor.evaluate(
                           (parentPath, jsonV) => {
                             let el = document.querySelector(
                               `[dog-value=${parentPath}]`
@@ -155,7 +155,7 @@ module.exports = function(server) {
                           },
                           parentPath,
                           jsonV
-                        );*/
+                        );
                       }
                     });
                   });
@@ -164,7 +164,7 @@ module.exports = function(server) {
                 //Define scope getters & setters
                 Object.defineProperty(root, path, {
                   set: v => {
-                    /*monitor.evaluate(
+                    monitor.evaluate(
                       (fullPath, v) => {
                         let el = document.querySelector(
                           `[dog-value=${fullPath}]`
@@ -174,7 +174,7 @@ module.exports = function(server) {
                       },
                       fullPath,
                       v
-                    );*/
+                    );
                     
                     return v;
                   },
@@ -204,7 +204,7 @@ module.exports = function(server) {
 
     scope = _scope;
 
-    /*(async () => {
+    (async () => {
       const browser = await puppeteer.launch({ args: ['--no-sandbox'], headless: true });
       monitor = await browser.newPage();
       await monitor.goto(
@@ -213,7 +213,7 @@ module.exports = function(server) {
         }/boydog-monitor/${options.monitorBasicAuth}`
       );
       restart();
-    })();*/
+    })();
     
     restart();
   };
