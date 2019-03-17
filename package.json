@@ -17,10 +17,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "boydog": "^1.1.13",
+    "boydog": "^1.1.15",
     "dotenv": "^7.0.0",
     "express": "^4.14.0",
-    "puppeteer": "^1.12.2"
+    "puppeteer": "^1.13.0"
   },
   "devDependencies": {
     "assert": "^1.4.1",
