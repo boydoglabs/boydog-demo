@@ -2,22 +2,22 @@ const Nightmare = require("nightmare");
 const assert = require("assert");
 const url = "http://localhost:3090/";
 
-xdescribe("for a single user", function() {
+describe("for a single user", function() {
   let nightmare = null;
   this.timeout("30s");
 
-  beforeEach(async () => {
+  beforeEach(() => {
     nightmare = new Nightmare({ show: false, x: 0, y: 0 });
-    await nightmare.viewport(600, 100);
+    nightmare.viewport(600, 100);
   });
   
   it("should load page", async () => {
-    try {
-      const title = await nightmare
-        .goto(url)
-        .wait()
-        .evaluate(() => document.querySelector(".boydoglabs-link").innerText);
+    const title = await nightmare
+      .goto(url)
+      .wait()
+      .evaluate(() => document.querySelector(".boydoglabs-link").innerText);
 
+    try {
       assert(title.length);
     } catch(e) { throw e; }
     finally {
@@ -26,18 +26,18 @@ xdescribe("for a single user", function() {
   });
 
   it("should load changes from made from server", async () => {
-    try {
-      await nightmare
-        .goto(url + "testScopeChangeFromServer")
-        .wait()
-        .goto(url)
-        .wait()
-        
-      const a = await nightmare.evaluate(() => document.querySelector('input[dog-value="word"]').value);
-      const b = await nightmare.evaluate(() => document.querySelector('input[dog-value="title"]').value);
-      const c = await nightmare.evaluate(() => document.querySelector('input[dog-value="subject"]').value);
+    await nightmare
+      .goto(url + "testScopeChangeFromServer")
+      .wait()
+      .goto(url)
+      .wait()
       
-      assert(a === "Changexs");
+    const a = await nightmare.evaluate(() => document.querySelector('input[dog-value="word"]').value);
+    const b = await nightmare.evaluate(() => document.querySelector('input[dog-value="title"]').value);
+    const c = await nightmare.evaluate(() => document.querySelector('input[dog-value="subject"]').value);
+      
+    try {
+      assert(a === "Changes");
       assert(b === "From");
       assert(c === "Server");
     } catch(e) { throw e; }
@@ -82,8 +82,6 @@ describe("for multiple users at the same time", function() {
       .end()
       .then(() => {});
     
-    console.log("thenA")
-    
     await nightmareB
       .click('input[dog-value="subject"]')
       .type(
@@ -100,9 +98,6 @@ describe("for multiple users at the same time", function() {
     const a = await nightmareB.evaluate(() => document.querySelector('input[dog-value="word"]').value);
     const b = await nightmareB.evaluate(() => document.querySelector('input[dog-value="subject"]').value);
     
-    console.log("aaa", a);
-    console.log("bbb", b);
-    
     try {
       assert(a === "user A editing here");
       assert(b === "user B editing here");
@@ -113,7 +108,7 @@ describe("for multiple users at the same time", function() {
   })
 
   //TODO: Make async/await
-  xit("should update a parent dog-value", done => {
+  it("should update a parent dog-value", async () => {
     nightmareA
       .click('input[dog-value="data>name"]')
       .type(
@@ -126,9 +121,9 @@ describe("for multiple users at the same time", function() {
       ) //Delete
       .type('input[dog-value="data>name"]', "first")
       .end()
-      .catch(done);
+      .then(() => {});
 
-    nightmareB
+    await nightmareB
       .click('input[dog-value="data>address"]')
       .type(
         'input[dog-value="data>address"]',
@@ -149,9 +144,7 @@ describe("for multiple users at the same time", function() {
         chai.assert.include(a, c);
       })
       .end()
-      .then(() => {
-        done();
-      })
-      .catch(done);
+      .then(() => {})
+      .catch();
   });
 });
