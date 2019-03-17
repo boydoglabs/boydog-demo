@@ -10,11 +10,17 @@ Status: Alpha
 
 ## Getting started
 
- - `git clone`
- - `npm install --g forever`
+ - `git clone https://github.com/boydoglabs/boydog-demo`
  - `npm install`
  - `npm start`
- - Browse localhost:3090
+ - Browse localhost:3090 from two different computers or mobile devices.
+
+## Realtime directives
+
+ - dog-value: Binds `<input>` value.
+ - dog-id: Bind tag id (not supported yet, contributions welcome)
+ - dog-html: Bind element inner HTML (not supported yet, contributions welcome)
+ - dog-class: Bind tag classes (not supported yet, contributions welcome)
 
 ## License
 
