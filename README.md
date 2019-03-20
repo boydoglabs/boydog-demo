@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/boydoglabs/boydog-demo.png?branch=master)](https://travis-ci.org/boydoglabs/boydog-demo)
 
 A demo page running on BoyDog (real-time collaborative web framework). This is basically the landing page at [boy.dog](http://boy.dog/).
-You can use this as your starting boilerplate for your RTC projects.
+You can use this as your starting boilerplate for your real-time collaborative projects.
 
 Status: Alpha
 
@@ -14,6 +14,11 @@ Status: Alpha
  - `npm install`
  - `npm start`
  - Browse localhost:3090 from two different computers or mobile devices.
+ - Browse the *boydog-monitor* at the URL provided in the console log.
+
+Develop with `npm run dev` to automatically restart server on file changes, including submodules inside "git_modules".
+
+Run e2e tests with `npm run test`.
 
 ## Realtime directives
 
