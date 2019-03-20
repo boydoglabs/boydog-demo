@@ -9,15 +9,15 @@ describe("for a single user", function() {
     nightmare = new Nightmare({ show: false, x: 0, y: 0 });
     nightmare.viewport(600, 100);
   });
-  
+
   it("should load page", async () => {
     await nightmare
       .goto(url)
       .wait()
       .evaluate(() => {
-        const t = document.querySelector(".boydoglabs-link").innerText.length
-        
-        chai.assert(t > 0)
+        const t = document.querySelector(".boydoglabs-link").innerText.length;
+
+        chai.assert(t > 0);
       })
       .end()
       .then(() => {})
@@ -34,7 +34,7 @@ describe("for a single user", function() {
         const a = document.querySelector('input[dog-value="word"]').value;
         const b = document.querySelector('input[dog-value="title"]').value;
         const c = document.querySelector('input[dog-value="subject"]').value;
-        
+
         chai.assert(a === "Changes");
         chai.assert(b === "From");
         chai.assert(c === "Server");
@@ -79,7 +79,7 @@ describe("for multiple users at the same time", function() {
       .type('input[dog-value="word"]', "user A editing here")
       .end()
       .then(() => {});
-    
+
     await nightmareB
       .click('input[dog-value="subject"]')
       .type(
@@ -95,14 +95,14 @@ describe("for multiple users at the same time", function() {
       .evaluate(() => {
         const a = document.querySelector('input[dog-value="word"]').value;
         const b = document.querySelector('input[dog-value="subject"]').value;
-        
+
         chai.assert(a === "user A editing here");
         chai.assert(b === "user B editing here");
       })
       .end()
       .then(() => {})
       .catch();
-  })
+  });
 
   //TODO: Make async/await
   it("should update a parent dog-value", async () => {
