@@ -105,7 +105,7 @@ describe("for multiple users at the same time", function() {
   });
 
   //TODO: Make async/await
-  it("should update a parent dog-value", async () => {
+  it("should update a parent dog-html content", async () => {
     nightmareA
       .click('input[dog-value="data>name"]')
       .type(
@@ -133,7 +133,7 @@ describe("for multiple users at the same time", function() {
       .type('input[dog-value="data>address"]', "second")
       .wait(1000)
       .evaluate(() => {
-        let a = document.querySelector('input[dog-value="data"]').value;
+        let a = document.querySelector('p[dog-html="data"]').textContent;
         let b = document.querySelector('input[dog-value="data>name"]').value;
         let c = document.querySelector('input[dog-value="data>address"]').value;
 
