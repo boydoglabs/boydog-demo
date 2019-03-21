@@ -23,8 +23,8 @@ Run e2e tests with `npm run test`.
 ## Realtime directives
 
  - dog-value: Binds `<input>` value.
+ - dog-html: Bind element inner HTML.
  - dog-id: Bind tag id (not supported yet, contributions welcome)
- - dog-html: Bind element inner HTML (not supported yet, contributions welcome)
  - dog-class: Bind tag classes (not supported yet, contributions welcome)
 
 ## License
