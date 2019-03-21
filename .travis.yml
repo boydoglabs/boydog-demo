@@ -11,6 +11,7 @@ before_install:
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 before_script:
   - npm install
+  - npm list --depth=0
 script:
   - npm start &
   - sleep 3
