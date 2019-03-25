@@ -1,5 +1,5 @@
 {   
-    "ignore": ["test/*", "README", "git_modules/boydog-client/build/*"],
+    "ignore": ["test/*", "README", "git_modules/boydog-client/build/*", "*.json"],
     "events": {
       "restart": "npm run --prefix git_modules/boydog-client build"
     }
