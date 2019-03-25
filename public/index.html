@@ -9,12 +9,12 @@
     
     <!-- Landing page resources -->
     <link rel="icon" href="/img/icon.png" />
-    <link rel="stylesheet" href="/css/Roboto.min.css" />
-    <link rel="stylesheet" href="/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/fonts/Roboto.min.css" />
     <link rel="stylesheet" href="/css/normalize.css" />
     <link rel="stylesheet" href="/css/milligram.css" />
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/basic.css" />
+    <link rel="stylesheet" href="/css/tabslet-style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
     <script src="/css/fontawesome-all.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -52,6 +52,19 @@
           </div>
         </div>
         <br/>
+        
+          
+        <div class='tabs tabs_default'>
+          <ul class='horizontal'>
+            <li><a href="#ex-1-boy">boy</a></li>
+            <li><a href="#ex-1-dog">dog</a></li>
+          </ul>
+          <div id='ex-1-boy'>
+            This is the default tab functionality.
+          </div>
+          <div id='ex-1-dog'><span>Tab 2</span></div>
+        </div>
+          
         
         <div class="row">
           <div class="column">
@@ -153,6 +166,9 @@ boy.assign(scope);
       </footer>
     </main>
   
+    <script type="text/javascript" src="/js/tabslet.bundle.js"></script>
+    
+    <!-- boy.dog client -->
     <script src="/boydog-client"></script>
     <script>
       //BoyDog client module
