@@ -39,7 +39,8 @@
           <br/>
           <h3 class="description">Server-to-client two way binding using WebSockets</h3>
           <br/>
-          <p>BoyDog is an experimental, Angular-like framework with a server-side <b>$scope</b> that allows you to easily create real-time webpage experiences.<br/>Open this page in a second window or computer and start interacting.</p>
+          <p>BoyDog is an experimental, Angular-like framework with a server-side <b>$scope</b> that allows you to easily create real-time webpage experiences.</p>
+          <p>Open this page in a second window or computer and start interacting.</p>
         </section>
       </header>
       
@@ -53,61 +54,157 @@
         </div>
         <br/>
         
-          
-        <div class='tabs tabs_default'>
-          <ul class='horizontal'>
-            <li><a href="#ex-1-boy">boy</a></li>
-            <li><a href="#ex-1-dog">dog</a></li>
-          </ul>
-          <div id='ex-1-boy'>
-            This is the default tab functionality.
-          </div>
-          <div id='ex-1-dog'><span>Tab 2</span></div>
-        </div>
-          
-        
+        <p class="example-line">BoyDog has a back-end scope (called <em>boy</em> scope), and a front-end scope (called <em>dog</em> scope). To make an input <em>real-time collaborative</em> across all users who are currently in this webpage, create the variable in <em>boy</em> and bind it in <em>dog</em>.</p>
         <div class="row">
+          <div class="column column-60">
+            <div class='tabs tabs_default'>
+              <div id='ex-1-boy'>
+                <span>
+                  <pre><code class="text-left">var scope = {
+  word: "starting word",
+};</code></pre>
+                </span>
+              </div>
+              <div id='ex-1-dog'><span>
+                <pre><code class="text-left">&lt;input type="text" dog-value="word"&gt;</code></pre>
+              </div>
+              <ul class='horizontal'>
+                <li><a href="#ex-1-boy">boy</a></li>
+                <li><a href="#ex-1-dog">dog</a></li>
+              </ul>
+            </div>
+          </div>
           <div class="column">
-            <br/>
-            <div class="row">
-              <div class="column">
-                <h5>Collaborative word</h5>
-                <input type="text" placeholder="Write a random word" dog-value="word" />
-                <span class="heading-font-size bd-code"><code>dog-value="word"</code></span>
-              </div>
-              <div class="column">
-                <h5>Collaborative title<span class="heading-font-size"></span></h5>
-                <input type="text" placeholder="Write a good title" dog-value="title" />
-                <span class="heading-font-size bd-code"><code>dog-value="title"</code></span>
-              </div>
-              <div class="column">
-                <h5>Collaborative subject<span class="heading-font-size"></span></h5>
-                <input type="text" placeholder="Write a good subject" dog-value="subject" />
-                <span class="heading-font-size bd-code"><code>dog-value="subject"</code></span>
-              </div>
-            </div>
-            <br/>
-            <div class="row">
-              <div class="column">
-                <h5>Object property<span class="heading-font-size"></span></h5>
-                <input type="text" placeholder="" dog-value="data.name" />
-                <span class="heading-font-size bd-code"><code>dog-value="data.name"</code></span>
-              </div>
-              <div class="column">
-                <h5>Object property<span class="heading-font-size"></span></h5>
-                <input type="text" placeholder="" dog-value="data.address" />
-                <span class="heading-font-size bd-code"><code>dog-value="data.address"</code></span>
-              </div>
-              <div class="column">
-                <h5>Print full object<span class="heading-font-size"></span></h5>
-                <p dog-html="data" style="margin: 15px 0px;">undefined</p>
-                <span class="heading-font-size bd-code"><code>dog-html="data"</code></span>
-              </div>
-            </div>
-            <br/>
+            <div class="example-spacer"></div>
+            <input type="text" placeholder="Write a random word" dog-value="word">
           </div>
         </div>
-        <br/>
+
+        <p class="example-line">You can add as many scope variables as you wish. They will all keep in sync:</p>
+        <div class="row">
+          <div class="column column-60">
+            <div class='tabs tabs_default'>
+              <div id='ex-1-boy'>
+                <span>
+                  <pre><code class="text-left">var scope = {
+  word: "starting word",
+  title: "initial title",
+  subject: "random subject",
+};</code></pre>
+                </span>
+              </div>
+              <div id='ex-1-dog'><span>
+                <pre><code class="text-left">&lt;input type="text" dog-value="word"&gt;
+&lt;input type="text" dog-value="title"&gt;
+&lt;input type="text" dog-value="subject"&gt;</code></pre>
+              </div>
+              <ul class='horizontal'>
+                <li><a href="#ex-1-boy">boy</a></li>
+                <li><a href="#ex-1-dog">dog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="column">
+            <div class="example-spacer"></div>
+            <input type="text" placeholder="Write a random word" dog-value="word">
+            <input type="text" placeholder="Write a random word" dog-value="title">
+            <input type="text" placeholder="Write a random word" dog-value="subject">
+          </div>
+        </div>
+
+        <p class="example-line">A scope variable may have as many levels as you want. To bind them just access them like you would do normally:</p>
+        <div class="row">
+          <div class="column column-60">
+            <div class='tabs tabs_default'>
+              <div id='ex-1-boy'>
+                <span>
+                  <pre><code class="text-left">var scope = {
+  data: {
+    name: "John Doe",
+    address: "74 Henry Road",
+  }
+};</code></pre>
+                </span>
+              </div>
+              <div id='ex-1-dog'><span>
+                <pre><code class="text-left">&lt;input type="text" dog-value="data.name"&gt;
+&lt;input type="text" dog-value="data.address"&gt;</code></pre>
+              </div>
+              <ul class='horizontal'>
+                <li><a href="#ex-1-boy">boy</a></li>
+                <li><a href="#ex-1-dog">dog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="column">
+            <div class="example-spacer"></div>
+            <input type="text" placeholder="Write a random word" dog-value="data.name">
+            <input type="text" placeholder="Write a random word" dog-value="data.address">
+          </div>
+        </div>
+
+        <p class="example-line">Parent objects can also be read (but not written) as a JSON string. Let's bind the previous object to a paragraph's <code>innerHTML</code>:</p>
+        <div class="row">
+          <div class="column column-60">
+            <div class='tabs tabs_default'>
+              <div id='ex-1-boy'>
+                <span>
+                  <pre><code class="text-left">var scope = {
+  data: {
+    name: "John Doe",
+    address: "74 Henry Road",
+  }
+};</code></pre>
+                </span>
+              </div>
+              <div id='ex-1-dog'><span>
+                <pre><code class="text-left">&lt;p dog-html="data"&gt;&lt;/p&gt;</code></pre>
+              </div>
+              <ul class='horizontal'>
+                <li><a href="#ex-1-boy">boy</a></li>
+                <li><a href="#ex-1-dog">dog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="column">
+            <div class="example-spacer"></div>
+            <p dog-html="data"></p>
+          </div>
+        </div>
+
+        <p class="example-line">There are more directives you can use:</p>
+        <div class="row">
+          <div class="column column-60">
+            <div class='tabs tabs_default'>
+              <div id='ex-1-boy'>
+                <span>
+                  <pre><code class="text-left">var scope = {
+  thing: "red"
+};</code></pre>
+                </span>
+              </div>
+              <div id='ex-1-dog'><span>
+                <pre><code class="text-left">&lt;input type=&quot;text&quot; dog-value=&quot;thing&quot;&gt;
+&lt;blockquote dog-html=&quot;thing&quot;&gt;&lt;/blockquote&gt;
+&lt;span dog-class=&quot;thing&quot;&gt;Try &quot;red&quot;, &quot;blue&quot; or &quot;bold italic green&quot;&lt;/span&gt;</code></pre>
+              </div>
+              <ul class='horizontal'>
+                <li><a href="#ex-1-boy">boy</a></li>
+                <li><a href="#ex-1-dog">dog</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="column">
+            <div class="example-spacer"></div>
+            <input type="text" dog-value="thing">
+            <blockquote dog-html="thing"></blockquote>
+            <!-- TODO: Enable this again, for some reason href it is not working -->
+            <!-- <p>As an href: <a dog-href="thing">Try "http://boy.dog"</a></p> -->
+            <div class="class-example">
+              <p>As an class: <span dog-class="thing">Try "red", "blue" or "bold italic green"</span>
+            </div>
+          </div>
+        </div>
         
         <div class="row">
           <div class="column">
@@ -115,17 +212,17 @@
             <br/>
             <div class="row">
               <div class="column">
-                <p>Install <strong>boy</strong>:</p>
+                <p>Install <em>boy</em>:</p>
                 <pre><code class="text-left">npm install --save boydog</code></pre>
                 <p>Include it:</p>
-                <pre><code class="text-left">var boy = require('boydog')(server);</code></pre>
+                <pre><code class="text-left">var boy = require('boydog')(express_server);</code></pre>
                 <p>And assign a boy's scope:</p>
 <pre><code class="text-left">var scope = { sample: "collaborative variable" }; //Boy scope
 boy.assign(scope);
 </code></pre>
               </div>
               <div class="column">
-                <p>Load the client (automatically injected route) in your html:</p>
+                <p>Load <em>dog</em> (client), automatically injected route in your express route:</p>
                 <pre><code class="text-left">&lt;script src="/boydog-client"&gt;&lt;/script&gt;</code></pre>
                 <p>Add a component binding its value to the variable:</p>
                 <pre><code class="text-left">&lt;input dog-value="sample"&gt;</code></pre>

@@ -411,3 +411,25 @@ section.container.white {
 section#demos input, section#demos textarea {
   margin-bottom: 0px;
 }
+
+div.example-spacer {
+  margin-top: 16px;
+}
+
+.tabs pre {
+  margin-bottom: 1px;
+}
+
+.example-line {
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+
+.class-example span.red { color: red; }
+.class-example span.blue { color: blue; }
+.class-example span.yellow { color: yellow; }
+.class-example span.green { color: green; }
+.class-example span.white { color: white; }
+.class-example span.black { color: black; }
+.class-example span.bold { font-weight: bold; }
+.class-example span.italic { font-style: italic; }
