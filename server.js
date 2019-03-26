@@ -11,7 +11,7 @@ var scope = {
   word: "starting word",
   title: "initial title",
   subject: "random subject",
-  thing: "red",
+  thing: "red bold",
   data: {
     name: "John Doe",
     address: "74 Henry Road"
