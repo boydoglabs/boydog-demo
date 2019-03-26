@@ -27,9 +27,9 @@ describe("for a single user", function() {
   it("should load changes from made from server", async () => {
     await nightmare
       .goto(url + "testScopeChangeFromServer")
-      .wait()
+      .wait(500)
       .goto(url)
-      .wait()
+      .wait(500)
       .evaluate(() => {
         const a = document.querySelector('input[dog-value="word"]').value;
         const b = document.querySelector('input[dog-value="title"]').value;
