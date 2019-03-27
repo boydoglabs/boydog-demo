@@ -7,13 +7,13 @@ describe("for a single user", function() {
 
   beforeEach(() => {
     nightmare = new Nightmare({ show: false, x: 0, y: 0 });
-    nightmare.viewport(600, 100);
-  });
+    nightmare.viewport(600, 100)
+      .goto(url)
+      .wait(3000);
+      });
 
   it("should load page", async () => {
     await nightmare
-      .goto(url)
-      .wait()
       .evaluate(() => {
         const t = document.querySelector(".boydoglabs-link").innerText.length;
 
@@ -27,9 +27,9 @@ describe("for a single user", function() {
   it("should load changes from made from server", async () => {
     await nightmare
       .goto(url + "testScopeChangeFromServer")
-      .wait(500)
+      .wait()
       .goto(url)
-      .wait(500)
+      .wait(3000)
       .evaluate(() => {
         const a = document.querySelector('input[dog-value="word"]').value;
         const b = document.querySelector('input[dog-value="title"]').value;
@@ -57,12 +57,12 @@ describe("for multiple users at the same time", function() {
     nightmareA
       .viewport(600, 100)
       .goto(url)
-      .wait();
+      .wait(3000);
 
     nightmareB
       .viewport(600, 100)
       .goto(url)
-      .wait();
+      .wait(3000);
   });
 
   it("should collaborate on 2 dog-value's", async () => {

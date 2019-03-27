@@ -39,8 +39,8 @@
           <br/>
           <h3 class="description">Server-to-client two way binding using WebSockets</h3>
           <br/>
-          <p>BoyDog is an experimental, Angular-like framework with a server-side <b>$scope</b> that allows you to easily create real-time webpage experiences.</p>
-          <p>Open this page in a second window or computer and start interacting.</p>
+          <p>BoyDog is a NodeJS framework that allows you to <em>real-time'ify</em> your webpages in 3 lines of code.</p>
+          <p>Open this page in a second window or mobile phone and start interacting.</p>
         </section>
       </header>
       
@@ -60,7 +60,7 @@
             <div class='tabs tabs_default'>
               <div id='ex-1-boy'>
                 <span>
-                  <pre><code class="text-left">var scope = {
+<pre><code class="text-left">var scope = {
   word: "starting word",
 };</code></pre>
                 </span>
@@ -86,7 +86,7 @@
             <div class='tabs tabs_default'>
               <div id='ex-1-boy'>
                 <span>
-                  <pre><code class="text-left">var scope = {
+<pre><code class="text-left">var scope = {
   word: "starting word",
   title: "initial title",
   subject: "random subject",
@@ -94,7 +94,7 @@
                 </span>
               </div>
               <div id='ex-1-dog'><span>
-                <pre><code class="text-left">&lt;input type="text" dog-value="word"&gt;
+<pre><code class="text-left">&lt;input type="text" dog-value="word"&gt;
 &lt;input type="text" dog-value="title"&gt;
 &lt;input type="text" dog-value="subject"&gt;</code></pre>
               </div>
@@ -118,7 +118,7 @@
             <div class='tabs tabs_default'>
               <div id='ex-1-boy'>
                 <span>
-                  <pre><code class="text-left">var scope = {
+<pre><code class="text-left">var scope = {
   data: {
     name: "John Doe",
     address: "74 Henry Road",
@@ -127,7 +127,7 @@
                 </span>
               </div>
               <div id='ex-1-dog'><span>
-                <pre><code class="text-left">&lt;input type="text" dog-value="data.name"&gt;
+<pre><code class="text-left">&lt;input type="text" dog-value="data.name"&gt;
 &lt;input type="text" dog-value="data.address"&gt;</code></pre>
               </div>
               <ul class='horizontal'>
@@ -149,7 +149,7 @@
             <div class='tabs tabs_default'>
               <div id='ex-1-boy'>
                 <span>
-                  <pre><code class="text-left">var scope = {
+<pre><code class="text-left">var scope = {
   data: {
     name: "John Doe",
     address: "74 Henry Road",
@@ -178,14 +178,13 @@
             <div class='tabs tabs_default'>
               <div id='ex-1-boy'>
                 <span>
-                  <pre><code class="text-left">var scope = {
+<pre><code class="text-left">var scope = {
   thing: "red"
 };</code></pre>
                 </span>
               </div>
               <div id='ex-1-dog'><span>
-                <pre><code class="text-left">&lt;input type=&quot;text&quot; dog-value=&quot;thing&quot;&gt;
-&lt;blockquote dog-html=&quot;thing&quot;&gt;&lt;/blockquote&gt;
+<pre><code class="text-left">&lt;input type=&quot;text&quot; dog-value=&quot;thing&quot;&gt;
 &lt;span dog-class=&quot;thing&quot;&gt;Try &quot;red&quot;, &quot;blue&quot; or &quot;bold italic green&quot;&lt;/span&gt;</code></pre>
               </div>
               <ul class='horizontal'>
