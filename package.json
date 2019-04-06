@@ -16,7 +16,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "boydog": "^1.1.25",
+    "boydog": "^1.1.26",
     "express": "^4.16.4"
   },
   "devDependencies": {
