@@ -221,9 +221,10 @@
                 <p>Install <em>boy</em>:</p>
                 <pre><code class="text-left">npm install --save boydog</code></pre>
                 <p>Include it:</p>
-                <pre><code class="text-left">var boy = require('boydog')(express_server);</code></pre>
+                <pre><code class="text-left">var boy = require('boydog');</code></pre>
                 <p>And assign a boy's scope:</p>
-<pre><code class="text-left">var scope = { sample: "collaborative variable" }; //Boy scope
+<pre><code class="text-left">const boy = boydog(http_server);
+var scope = { sample: "collaborative variable" }; //Boy scope
 boy.assign(scope);
 </code></pre>
               </div>

@@ -3,17 +3,20 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/boydoglabs/boydog-demo)
 [![Build Status](https://travis-ci.org/boydoglabs/boydog-demo.png?branch=master)](https://travis-ci.org/boydoglabs/boydog-demo)
 
-A demo page running on BoyDog (real-time collaborative web framework). This is basically the landing page at [boy.dog](http://boy.dog/).
-You can use this as your starting boilerplate for your real-time collaborative projects.
+BoyDog is a framework for building ultra-fast, real-time collaborative web applications. See [www.boy.dog](http://boy.dog/).
 
-Status: Alpha
+You can use this repository as your starting boilerplate for your real-time collaborative projects.
 
-## Getting started
+*Status: Fully working beta*
+
+## Running this demo
 
  - `git clone https://github.com/boydoglabs/boydog-demo`
  - `npm install`
  - `npm start`
  - Browse localhost:3090 from two different computers or mobile devices.
+
+For a minimal, bare-bones boilerplate see: https://github.com/boydoglabs/boydog-demo-minimal
 
 ## Realtime directives
 
@@ -21,6 +24,11 @@ Status: Alpha
  - dog-html: Bind element inner HTML.
  - dog-id: Bind tag id (not supported yet, contributions welcome)
  - dog-class: Bind tag classes (not supported yet, contributions welcome)
+
+Examples:
+ - `<input dog-value="editor">`
+ - `<p class="alert" dog-html="alertInfo"></p>`
+ - `<p dog-class="alert.class" dog-html="alert.info"></p>`
 
 ## BoyDog monitor
 
