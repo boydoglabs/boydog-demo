@@ -30,6 +30,8 @@ Examples:
  - `<p class="alert" dog-html="alertInfo"></p>`
  - `<p dog-class="alert.class" dog-html="alert.info"></p>`
 
+See more examples at the [demo page](http://boy.dog/).
+
 ## BoyDog monitor
 
 BoyDog automatically creates a route to monitor all changes users make. Browse the *boydog-monitor* at the URL provided in the console log when you run `npm start`. This allows you to monitor user's input real-time. It has admin privileges and changes made through this page will be sent to connected users.
