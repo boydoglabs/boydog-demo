@@ -27,7 +27,7 @@ describe("for a single user", function() {
   it("should load changes from made from server", async () => {
     await nightmare
       .goto(url + "testScopeChangeFromServer")
-      .wait()
+      .wait(1000)
       .goto(url)
       .wait(3000)
       .evaluate(() => {
