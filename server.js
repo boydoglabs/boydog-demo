@@ -18,6 +18,17 @@ var scope = {
   }
 };
 
+/*var logic = {
+  word: {
+    _give: function(op) {
+      console.log("_give op", op);
+    },
+    _take: function(op) {
+      console.log("_take op", op);
+    },
+  }
+}*/
+
 boy.attach(scope);
 
 app.use(express.static("public"));
