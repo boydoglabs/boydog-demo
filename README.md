@@ -40,12 +40,15 @@ BoyDog automatically creates a route to monitor all changes users make. Browse t
 
 ## Contributing
 
-There are 4 different repositories:
+There are 3 main repositories:
 
  - [boydog](https://github.com/boydoglabs/boydog): The server module, handles OT, auth, and creates the boydog-monitor.
  - [boydog-client](https://github.com/boydoglabs/boydog-client): The client module, handles OT for the users, is in charge of updating HTML elements with the latest value from the server.
+- boydog-demo (this repository): A demo showcasing all BoyDog capabilities. This is what you see  at [boy.dog](http://www.boy.dog). For simplicity all development is also made here, therefore if you want to start a new project **or** develop a new feature just clone this repository.
+
+And a shareDB plugin:
+
  - [sharedb-attribute-binding](https://github.com/adelriosantiago/sharedb-attribute-binding): A custom-made ShareDB binding that allows you to sync element attributes like id, class, href, etc.
- - This repository: It is a demo showcasing all BoyDog capabilities. This is always running at [boy.dog](http://www.boy.dog). For simplicity all development is also made here, therefore if you want to start a new project **or** develop a new feature just clone this repository.
 
 All these modules can be found inside the "git_modules" of this repo. To help you do changes easily do `npm run dev` to install these modules and automatically restart server on file changes.
 
