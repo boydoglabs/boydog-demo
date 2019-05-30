@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node ./server.js",
     "forever": "forever --uid \"boydog-demo\" ./server.js",
-    "dev": "npm install --no-save ./git_modules/boydog/ ./git_modules/boydog-client/ ./git_modules/sharedb-attribute-binding/ && nodemon ./server.js",
+    "dev:boydog-client": "cd ./git_modules/boydog-client && npm install --no-save ../sharedb-attribute-binding/ && cd ../../",
+    "dev:boydog": "cd ./git_modules/boydog && npm install --no-save ../boydog-client/ && cd ../../",
+    "dev": "npm install --no-save ./git_modules/boydog/ && npm run -s dev:boydog && npm run -s dev:boydog-client && nodemon ./server.js",
     "format": "prettier --write \"**/*.js\"",
     "test": "mocha --timeout 10000"
   },
@@ -17,11 +19,11 @@
   "license": "MIT",
   "dependencies": {
     "boydog": "^1.1.27",
-    "express": "^4.16.4"
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "mocha": "^6.0.2",
-    "nightmare": "^3.0.1",
-    "prettier": "^1.16.4"
+    "mocha": "^6.1.4",
+    "nightmare": "^3.0.2",
+    "prettier": "^1.17.1"
   }
 }
