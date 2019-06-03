@@ -18,18 +18,16 @@ var scope = {
   }
 };
 
-/*var logic = {
-  word: {
-    _give: function(op) {
-      console.log("_give op", op);
-    },
-    _take: function(op) {
-      console.log("_take op", op);
-    },
-  }
-}*/
+var logic = {
+  _write: function(val, isMonitor) { //TODO: Implement `isMonitor` boolean to avoid stackoverflows
+  
+    if (val === "uppercase") val = val.toUpperCase();
 
-boy.attach(scope);
+    return val;
+  }
+}
+
+boy.attach(scope, logic);
 
 app.use(express.static("public"));
 
