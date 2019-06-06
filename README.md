@@ -24,8 +24,8 @@ For a minimal, bare-bones boilerplate see: https://github.com/boydoglabs/boydog-
 
  - dog-value: Binds `<input>` value.
  - dog-html: Bind element inner HTML.
- - dog-id: Bind tag id (not supported yet, contributions welcome)
- - dog-class: Bind tag classes (not supported yet, contributions welcome)
+ - dog-id: Bind tag id
+ - dog-class: Bind tag classes
 
 Examples:
  - `<input dog-value="editor">`
