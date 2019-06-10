@@ -12,6 +12,7 @@ var scope = {
   title: "initial title",
   subject: "random subject",
   thing: "red bold",
+  detectText: "lowercase",
   data: {
     name: "John Doe",
     address: "74 Henry Road"
@@ -20,10 +21,7 @@ var scope = {
 
 var logic = {
   _write: function(val, isMonitor) { //TODO: Implement `isMonitor` boolean to avoid stackoverflows
-  
-    if (val === "uppercase") val = val.toUpperCase();
-
-    return val;
+    return (val === "uppercase") ? val.toUpperCase() : val;
   }
 }
 

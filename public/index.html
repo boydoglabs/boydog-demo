@@ -39,7 +39,7 @@
           <br>
           <h3 class="description">Server-to-client two way binding using WebSockets</h3>
           <br>
-          <p>BoyDog is a NodeJS framework that allows you to <em>real-time'ify</em> your webpages in 3 lines of code.</p>
+          <p>BoyDog is a web framework based on Express.JS and ShareDB that allows you to build real-time collaborative webpages in 3 lines of code.</p>
           <p>Open this page in a second window or mobile phone and start interacting.</p>
         </section>
       </header>
@@ -205,10 +205,49 @@
                 <!-- TODO: Enable this again, for some reason href it is not working -->
                 <!-- <p>As an href: <a dog-href="thing">Try "http://boy.dog"</a></p> -->
                 <div class="class-example">
-                  <p>As an class: <span dog-class="thing">Try "red", "blue" or "italic blue"</span>
+                  <p>As an class: <span dog-class="thing">Try "red", "blue" or "italic blue"</span></p>
                 </div>
               </div>
             </div>
+
+            <p class="example-line">You can trigger custom server logic when data changes:</p>
+            <div class="row">
+              <div class="column column-60">
+                <div class='tabs tabs_default'>
+                  <div id='ex-1-boy'>
+                    <span>
+<pre><code class="text-left">var scope = {
+  detectText: "lowercase"
+};
+
+var logic = {
+  _write: function(val) {
+    return (val === "uppercase") ? val.toUpperCase() : val; //Change happens here
+  }
+}
+</code></pre>
+                    </span>
+                  </div>
+                  <div id='ex-1-dog'><span>
+<pre><code class="text-left">&lt;input type=&quot;text&quot; dog-value=&quot;detectText&quot;&gt;
+</code></pre>
+                  </div>
+                  <ul class='horizontal'>
+                    <li><a href="#ex-1-boy">boy</a></li>
+                    <li><a href="#ex-1-dog">dog</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="column">
+                <div class="example-spacer"></div>
+                <input type="text" dog-value="detectText">
+                <div class="class-example">
+                  <p>Write "uppercase" to trigger a server custom logic change</p>
+                </div>
+              </div>
+            </div>
+
+
           </div>
         </div>
         

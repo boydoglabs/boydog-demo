@@ -52,7 +52,9 @@ And a shareDB plugin:
 
 All these modules can be found inside the "git_modules" of this repo. To help you do changes easily do `npm run dev` to install these modules and automatically restart server on file changes.
 
-Run e2e tests with `npm run test`. Note that for some unknown reason some Travis tests sometimes fail. This issue is probably related to the BoyDog monitor having enough time to lauch.
+## Running tests
+
+First run the server with `npm start` or `npm run dev` if you are developing a new feature. Then run e2e tests with `npm run test`.
 
 ## License
 

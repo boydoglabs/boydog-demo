@@ -10,7 +10,7 @@
     "dev:boydog": "cd ./git_modules/boydog && npm install --no-save ../boydog-client/ && cd ../../",
     "dev": "npm install --no-save ./git_modules/boydog/ && npm run -s dev:boydog && npm run -s dev:boydog-client && nodemon ./server.js",
     "format": "prettier --write \"**/*.js\"",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 30000"
   },
   "author": "BoyDog (boy.dog)",
   "contributors": [
@@ -18,12 +18,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "boydog": "^1.1.27",
+    "boydog": "^1.1.29",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "mocha": "^6.1.4",
     "nightmare": "^3.0.2",
-    "prettier": "^1.17.1"
+    "prettier": "^1.18.2"
   }
 }
