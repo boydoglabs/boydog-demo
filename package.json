@@ -6,11 +6,11 @@
   "scripts": {
     "start": "node ./server.js",
     "forever": "forever --uid \"boydog-demo\" ./server.js",
-    "dev:boydog-client": "cd ./git_modules/boydog-client && npm install --no-save ../sharedb-attribute-binding/ && cd ../../",
-    "dev:boydog": "cd ./git_modules/boydog && npm install --no-save ../boydog-client/ && cd ../../",
-    "dev": "npm install --no-save ./git_modules/boydog/ && npm run -s dev:boydog && npm run -s dev:boydog-client && nodemon ./server.js",
+    "dev": "npm install --no-save ./git_modules/boydog/ && npm run -s _dev:boydog && npm run -s _dev:boydog-client && nodemon ./server.js",
     "format": "prettier --write \"**/*.js\"",
-    "test": "mocha --timeout 30000"
+    "test": "mocha --timeout 30000",
+    "_dev:boydog-client": "cd ./git_modules/boydog-client && npm install --no-save ../sharedb-attribute-binding/ && cd ../../",
+    "_dev:boydog": "cd ./git_modules/boydog && npm install --no-save ../boydog-client/ && cd ../../"
   },
   "author": "BoyDog (boy.dog)",
   "contributors": [
