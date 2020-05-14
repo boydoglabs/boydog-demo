@@ -6,11 +6,9 @@
   "scripts": {
     "start": "node ./server.js",
     "forever": "forever --uid \"boydog-demo\" ./server.js",
-    "dev": "npm install --no-save ./git_modules/boydog/ && npm run -s _dev:boydog && npm run -s _dev:boydog-client && nodemon ./server.js",
+    "dev": "node ./server-dev-link.js && nodemon ./server.js",
     "format": "prettier --write \"**/*.js\"",
-    "test": "mocha --timeout 30000",
-    "_dev:boydog-client": "cd ./git_modules/boydog-client && npm install --no-save ../sharedb-attribute-binding/ && cd ../../",
-    "_dev:boydog": "cd ./git_modules/boydog && npm install --no-save ../boydog-client/ && cd ../../"
+    "test": "mocha --timeout 30000"
   },
   "author": "BoyDog (boy.dog)",
   "contributors": [
@@ -18,12 +16,13 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "boydog": "^1.1.29",
+    "boydog": "^1.1.32",
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "mocha": "^6.1.4",
+    "del": "^5.1.0",
+    "mocha": "^6.2.3",
     "nightmare": "^3.0.2",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   }
 }
