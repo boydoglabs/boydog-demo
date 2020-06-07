@@ -1,13 +1,13 @@
-var http = require("http");
-var express = require("express");
-var app = express();
-var server = http.createServer(app);
-var port = 3090;
-var boydog = require("boydog");
-var boy = boydog(server);
+const http = require("http");
+const express = require("express");
+const app = express();
+const server = http.createServer(app);
+const port = 3090;
+const boydog = require("boydog");
+const boy = boydog(server);
 
 //Boydog init
-var scope = {
+let scope = {
   word: "starting word",
   title: "initial title",
   subject: "random subject",
@@ -15,15 +15,16 @@ var scope = {
   detectText: "lowercase",
   data: {
     name: "John Doe",
-    address: "74 Henry Road"
-  }
+    address: "74 Henry Road",
+  },
 };
 
-var logic = {
-  _write: function(val, isMonitor) { //TODO: Implement `isMonitor` boolean to avoid stackoverflows
-    return (val === "uppercase") ? val.toUpperCase() : val;
-  }
-}
+let logic = {
+  _write: function(val, isMonitor) {
+    //TODO: Implement `isMonitor` boolean to avoid stackoverflows
+    return val === "uppercase" ? val.toUpperCase() : val;
+  },
+};
 
 boy.attach(scope, logic);
 
@@ -37,7 +38,7 @@ app.get("/testScopeChangeFromServer", (req, res) => {
 
   return res.json({
     done:
-      "Some fields have been changed from the server. These values should be now visible to all users."
+      "Some fields have been changed from the server. These values should be now visible to all users.",
   });
 });
 
