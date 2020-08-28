@@ -1,6 +1,6 @@
 {
   "name": "boydog-demo",
-  "version": "0.0.2",
+  "version": "2.0.0",
   "description": "BoyDog is a framework for building ultra-fast, real-time collaborative web applications. This is starting template for your boydog projects.",
   "main": "server.js",
   "scripts": {
