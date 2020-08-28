@@ -57,9 +57,3 @@ typings/
 # dotenv environment variables file
 .env
 
-*.code-workspace
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json

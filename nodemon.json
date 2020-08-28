@@ -1,6 +1,4 @@
-{   
-    "ignore": ["test/*", "README", "git_modules/boydog-client/build/*", "*.json"],
-    "events": {
-      "restart": "npm run --prefix git_modules/boydog-client build"
-    }
+{
+  "delay": "100",
+  "watch": ["./server.js"]
 }

@@ -9,14 +9,13 @@
     
     <!-- Landing page resources -->
     <link rel="icon" href="/img/icon.png" />
-    <link rel="stylesheet" href="/fonts/Roboto.min.css" />
-    <link rel="stylesheet" href="/css/normalize.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/milligram.css" />
-    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="stylesheet" href="/css/milligram-demopage.css" />
     <link rel="stylesheet" href="/css/basic.css" />
     <link rel="stylesheet" href="/css/tabslet-style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
-    <script src="/css/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43591418-4"></script>
     <script>
@@ -50,7 +49,7 @@
             <h3 class="title text-center">Examples</h3>
             <br>
             
-            <p class="example-line">BoyDog has a back-end scope (called <em>boy</em> scope), and a front-end scope (called <em>dog</em> scope). To make an input <em>real-time collaborative</em> across all users who are currently in this webpage, create the variable in <em>boy</em> and bind it in <em>dog</em>.</p>
+            <p class="example-line">BoyDog has a back-end scope (called <em>back</em> scope), and a front-end scope (called <em>front</em> scope). To make an input <em>real-time collaborative</em> across all users who are currently in this webpage, create the variable in <em>back</em> and bind it in <em>front</em>.</p>
             
             <div class="row">
               <div class="column column-60">
@@ -64,17 +63,17 @@
                     </span>
                   </div>
                   <div id='ex-1-dog'><span>
-                    <pre><code class="text-left">&lt;input type="text" dog-value="word"&gt;</code></pre>
+                    <pre><code class="text-left">&lt;input type="text" bd-value="word"&gt;</code></pre>
                   </div>
                   <ul class='horizontal'>
-                    <li><a href="#ex-1-boy">boy</a></li>
-                    <li><a href="#ex-1-dog">dog</a></li>
+                    <li><a href="#ex-1-boy">back</a></li>
+                    <li><a href="#ex-1-dog">front</a></li>
                   </ul>
                 </div>
               </div>
               <div class="column">
                 <div class="example-spacer"></div>
-                <input type="text" placeholder="Write a random word" dog-value="word">
+                <input type="text" placeholder="Write something" bd-value="word">
               </div>
             </div>
 
@@ -93,22 +92,22 @@
                     </span>
                   </div>
                   <div id='ex-1-dog'><span>
-<pre><code class="text-left">&lt;input type="text" dog-value="word"&gt;
-&lt;input type="text" dog-value="title"&gt;
-&lt;input type="text" dog-value="subject"&gt;
+<pre><code class="text-left">&lt;input type="text" bd-value="word"&gt;
+&lt;input type="text" bd-value="title"&gt;
+&lt;input type="text" bd-value="subject"&gt;
 </code></pre>
                   </div>
                   <ul class='horizontal'>
-                    <li><a href="#ex-1-boy">boy</a></li>
-                    <li><a href="#ex-1-dog">dog</a></li>
+                    <li><a href="#ex-1-boy">back</a></li>
+                    <li><a href="#ex-1-dog">front</a></li>
                   </ul>
                 </div>
               </div>
               <div class="column">
                 <div class="example-spacer"></div>
-                <input type="text" placeholder="Write a random word" dog-value="word">
-                <input type="text" placeholder="Write a random word" dog-value="title">
-                <input type="text" placeholder="Write a random word" dog-value="subject">
+                <input type="text" placeholder="Write something" bd-value="word">
+                <input type="text" placeholder="Write something" bd-value="title">
+                <input type="text" placeholder="Write something" bd-value="subject">
               </div>
             </div>
 
@@ -128,24 +127,25 @@
                     </span>
                   </div>
                   <div id='ex-1-dog'><span>
-<pre><code class="text-left">&lt;input type="text" dog-value="data.name"&gt;
-&lt;input type="text" dog-value="data.address"&gt;
+<pre><code class="text-left">&lt;input type="text" bd-value="data.name"&gt;
+&lt;input type="text" bd-value="data.address"&gt;
 </code></pre>
                   </div>
                   <ul class='horizontal'>
-                    <li><a href="#ex-1-boy">boy</a></li>
-                    <li><a href="#ex-1-dog">dog</a></li>
+                    <li><a href="#ex-1-boy">back</a></li>
+                    <li><a href="#ex-1-dog">front</a></li>
                   </ul>
                 </div>
               </div>
               <div class="column">
                 <div class="example-spacer"></div>
-                <input type="text" placeholder="Write a random word" dog-value="data.name">
-                <input type="text" placeholder="Write a random word" dog-value="data.address">
+                <input type="text" placeholder="Write something" bd-value="data.name">
+                <input type="text" placeholder="Write something" bd-value="data.address">
               </div>
             </div>
 
-            <p class="example-line">Parent objects can also be read (but not written) as a JSON string. Let's bind the previous object to a paragraph's <code>innerHTML</code>:</p>
+            <!-- TODO: Implement parent read-only reading -->
+            <!-- <p class="example-line">Parent objects can also be read (but not written) as a JSON string. Let's bind the previous object to a paragraph's <code>innerHTML</code>:</p>
             <div class="row">
               <div class="column column-60">
                 <div class='tabs tabs_default'>
@@ -164,8 +164,8 @@
                     <pre><code class="text-left">&lt;p dog-html="data"&gt;&lt;/p&gt;</code></pre>
                   </div>
                   <ul class='horizontal'>
-                    <li><a href="#ex-1-boy">boy</a></li>
-                    <li><a href="#ex-1-dog">dog</a></li>
+                    <li><a href="#ex-1-boy">back</a></li>
+                    <li><a href="#ex-1-dog">front</a></li>
                   </ul>
                 </div>
               </div>
@@ -173,9 +173,9 @@
                 <div class="example-spacer"></div>
                 <p dog-html="data"></p>
               </div>
-            </div>
+            </div> -->
 
-            <p class="example-line">There are more directives you can use:</p>
+            <p class="example-line">You can also bind other attributes:</p>
             <div class="row">
               <div class="column column-60">
                 <div class='tabs tabs_default'>
@@ -188,29 +188,31 @@
                     </span>
                   </div>
                   <div id='ex-1-dog'><span>
-<pre><code class="text-left">&lt;input type=&quot;text&quot; dog-value=&quot;thing&quot;&gt;
-&lt;span dog-class=&quot;thing&quot;&gt;Try &quot;red&quot;, &quot;blue&quot; or &quot;italic blue&quot;&lt;/span&gt;
+<pre><code class="text-left">&lt;input type=&quot;text&quot; bd-value=&quot;thing&quot;&gt;
+&lt;blockquote bd-html=&quot;thing&quot;&gt;&lt;/blockquote&gt;
+&lt;span bd-class=&quot;thing&quot;&gt;Try &quot;red&quot;, &quot;blue&quot; or &quot;italic blue&quot;&lt;/span&gt;
 </code></pre>
                   </div>
                   <ul class='horizontal'>
-                    <li><a href="#ex-1-boy">boy</a></li>
-                    <li><a href="#ex-1-dog">dog</a></li>
+                    <li><a href="#ex-1-boy">back</a></li>
+                    <li><a href="#ex-1-dog">front</a></li>
                   </ul>
                 </div>
               </div>
               <div class="column">
                 <div class="example-spacer"></div>
-                <input type="text" dog-value="thing">
-                <blockquote dog-html="thing"></blockquote>
+                <input type="text" placeholder="Write something" bd-value="thing">
                 <!-- TODO: Enable this again, for some reason href it is not working -->
                 <!-- <p>As an href: <a dog-href="thing">Try "http://boy.dog"</a></p> -->
+                <blockquote bd-html="thing"></blockquote>
                 <div class="class-example">
-                  <p>As an class: <span dog-class="thing">Try "red", "blue" or "italic blue"</span></p>
+                  <span bd-class="thing">As a class. Try "red", "blue" or "italic blue"</span></p>
                 </div>
               </div>
             </div>
 
-            <p class="example-line">You can trigger custom server logic when data changes:</p>
+            <!-- TODO: Implement middleware, after an OP text should become uppercase -->
+            <!-- <p class="example-line">You can trigger custom server logic when data changes:</p>
             <div class="row">
               <div class="column column-60">
                 <div class='tabs tabs_default'>
@@ -229,25 +231,23 @@ var logic = {
                     </span>
                   </div>
                   <div id='ex-1-dog'><span>
-<pre><code class="text-left">&lt;input type=&quot;text&quot; dog-value=&quot;detectText&quot;&gt;
+<pre><code class="text-left">&lt;input type=&quot;text&quot; bd-value=&quot;detectText&quot;&gt;
 </code></pre>
                   </div>
                   <ul class='horizontal'>
-                    <li><a href="#ex-1-boy">boy</a></li>
-                    <li><a href="#ex-1-dog">dog</a></li>
+                    <li><a href="#ex-1-boy">back</a></li>
+                    <li><a href="#ex-1-dog">front</a></li>
                   </ul>
                 </div>
               </div>
               <div class="column">
                 <div class="example-spacer"></div>
-                <input type="text" dog-value="detectText">
+                <input type="text" bd-value="detectText">
                 <div class="class-example">
                   <p>Write "uppercase" to trigger a server custom logic change</p>
                 </div>
               </div>
-            </div>
-
-
+            </div>-->
           </div>
         </div>
         
@@ -257,27 +257,33 @@ var logic = {
             <br>
             <div class="row">
               <div class="column">
-                <p>Install <em>boy</em>:</p>
+                <p>Install <em>boydog</em>:</p>
                 <pre><code class="text-left">npm install --save boydog</code></pre>
-                <p>Include it:</p>
-                <pre><code class="text-left">var boy = require('boydog');</code></pre>
-                <p>And assign a boy's scope:</p>
-<pre><code class="text-left">const boy = boydog(http_server);
-var scope = { sample: "collaborative variable" }; //Boy scope
-boy.assign(scope);
+                <p>Init boydog in your Express server:</p>
+<pre><code class="text-left">const express = require("express")
+<strong>const boydog = require("boydog")</strong>
+
+const app = express()
+const server = http.createServer(app)
+
+<strong>let scope = {
+  realtime: "sample text",
+}
+boydog.init(scope, server)</strong>
+
+server.listen(8080)
 </code></pre>
-              </div>
-              <div class="column">
-                <p>Load <em>dog</em> (client), automatically injected route in your express route:</p>
-                <pre><code class="text-left">&lt;script src="/boydog-client"&gt;&lt;/script&gt;</code></pre>
-                <p>Add a component binding its value to the variable:</p>
-                <pre><code class="text-left">&lt;input dog-value="sample"&gt;</code></pre>
-                <p>And attach it:</p>
-<pre><code class="text-left">&lt;script&gt;
-  var scope = "html"; //Dog scope
-  dog.assign(scope);
-&lt;/script&gt;
+                <p>Bind a scope variable and load <em>boydog-client</em> before the closing body tag:</p>
+                <pre><code class="text-left">&lt;body&gt
+  <strong>&lt;input type="text" bd-value="realtime"&gt;</strong>
+
+  <strong>&lt;script src="/boydog-client"&gt;&lt;/script&gt;</strong>
+  &lt;script&gt;
+    <strong>boydog.init()</strong>
+  &lt;/script&gt;
+&lt;/body&gt
 </code></pre>
+              <p>That's it! Remember you can also bind <code>bd-class</code>, <code>bd-id</code>, <code>bd-href</code>, <code>bd-src</code> and <code>bd-style</code> attributes.</p>
               </div>
             </div>
           </div>
@@ -287,15 +293,15 @@ boy.assign(scope);
         <br>
         <div class="row text-center">
           <div class="column">
-            <i class="fas fa-2x fa-caret-square-right"></i>
+            <i class="fa fa-2x fa-caret-square-o-right"></i>
             <p>The <a href="https://github.com/boydoglabs/boydog-demo" title="demo page">boydog-demo</a> page (this page)</p>
           </div>
           <div class="column">
-            <i class="fas fa-2x fa-server"></i>
+            <i class="fa fa-2x fa-server"></i>
             <p>The <a href="https://github.com/boydoglabs/boydog" title="Contributing">boydog</a> server module.</p>
           </div>
           <div class="column">
-            <i class="fas fa-2x fa-desktop"></i>
+            <i class="fa fa-2x fa-desktop"></i>
             <p>The <a href="https://github.com/boydoglabs/boydog-client" title="boydog-dog">boydog-client</a> client module.</p>
           </div>
         </div>
@@ -314,11 +320,7 @@ boy.assign(scope);
     <!-- boy.dog client -->
     <script src="/boydog-client"></script>
     <script>
-      //BoyDog client module
-      var dog = boydog();
-      
-      dog.attach();
+      boydog.init()
     </script>
-    
   </body>
 </html>

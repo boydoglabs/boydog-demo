@@ -1,12 +1,13 @@
-const http = require("http");
-const express = require("express");
-const app = express();
-const server = http.createServer(app);
-const port = 3090;
-const boydog = require("boydog");
-const boy = boydog(server);
+const http = require("http")
+const express = require("express")
+const boydog = require("boydog")
 
-//Boydog init
+const app = express()
+app.use(express.static("static"))
+
+// Init server
+const server = http.createServer(app)
+
 let scope = {
   word: "starting word",
   title: "initial title",
@@ -17,30 +18,10 @@ let scope = {
     name: "John Doe",
     address: "74 Henry Road",
   },
-};
+}
 
-let logic = {
-  _write: function(val, isMonitor) {
-    //TODO: Implement `isMonitor` boolean to avoid stackoverflows
-    return val === "uppercase" ? val.toUpperCase() : val;
-  },
-};
+boydog.init(scope, server)
 
-boy.attach(scope, logic);
-
-app.use(express.static("public"));
-
-//Testing routes
-app.get("/testScopeChangeFromServer", (req, res) => {
-  scope.word = "Changes";
-  scope.title = "From";
-  scope.subject = "Server";
-
-  return res.json({
-    done:
-      "Some fields have been changed from the server. These values should be now visible to all users.",
-  });
-});
-
-server.listen(port);
-console.log("Listening on http://localhost:" + port);
+server.listen(8080, () => {
+  console.log("Listening on http://localhost:8080")
+})
