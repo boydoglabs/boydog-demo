@@ -1,6 +1,7 @@
 const http = require("http")
 const express = require("express")
 const boydog = require("boydog")
+const port = 3090
 
 const app = express()
 app.use(express.static("static"))
@@ -22,6 +23,6 @@ let scope = {
 
 boydog.init(scope, server)
 
-server.listen(8080, () => {
-  console.log("Listening on http://localhost:8080")
+server.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}`)
 })
