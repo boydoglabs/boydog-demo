@@ -20,15 +20,15 @@ You can use this repository as your starting boilerplate for your real-time coll
 
 ## Realtime directives
 
- - dog-value: Binds `<input>` value.
- - dog-html: Bind element inner HTML.
- - dog-id: Bind tag id
- - dog-class: Bind tag classes
+ - bd-value: Binds `<input>` value.
+ - bd-html: Bind element inner HTML.
+ - bd-id: Bind tag id
+ - bd-class: Bind tag classes
 
 Examples:
- - `<input dog-value="editor">`
- - `<p class="alert" dog-html="alertInfo"></p>`
- - `<p dog-class="alert.class" dog-html="alert.info"></p>`
+ - `<input bd-value="editor">`
+ - `<p class="alert" bd-html="alertInfo"></p>`
+ - `<p bd-class="alert.class" bd-html="alert.info"></p>`
 
 See more examples at the [demo page](http://www.boy.dog/).
 
