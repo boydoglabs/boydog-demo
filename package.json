@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon ./server.js",
-    "start:forever": "forever --uid \"boydog-demo\" ./server.js",
     "test": "mocha --timeout 30000"
   },
   "author": "BoyDog (www.boy.dog)",
@@ -15,8 +14,8 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "forever": "^3.0.2",
     "mocha": "^8.1.2",
+    "nightmare": "^3.0.2",
     "nodemon": "^2.0.4"
   }
 }

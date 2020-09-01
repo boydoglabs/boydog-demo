@@ -1,31 +1,29 @@
-const Nightmare = require("nightmare");
-const url = "http://localhost:3090/";
+const Nightmare = require("nightmare")
+const url = "http://localhost:3090/"
 
-const showScreens = false;
+const showScreens = false
 
-describe("E2E USER TESTING", function() {
-  describe("for a single user", function() {
-    let nightmare = null;
-    this.timeout("30s");
+describe("E2E USER TESTING", function () {
+  describe("for a single user", function () {
+    let nightmare = null
+    this.timeout("30s")
 
     beforeEach(() => {
-      nightmare = new Nightmare({ show: showScreens, x: 0, y: 0 });
-      nightmare.viewport(600, 600)
-        .goto(url)
-        .wait(3000);
-        });
+      nightmare = new Nightmare({ show: showScreens, x: 0, y: 0 })
+      nightmare.viewport(600, 600).goto(url).wait(3000)
+    })
 
     it("should load page", async () => {
       await nightmare
         .evaluate(() => {
-          const t = document.querySelector(".boydoglabs-link").innerText;
+          const t = document.querySelector(".boydoglabs-link").innerText
 
-          chai.assert.isNotEmpty(t);
+          chai.assert.isNotEmpty(t)
         })
         .end()
         .then(() => {})
-        .catch();
-    });
+        .catch()
+    })
 
     //TODO: Fix this test... For some reason it is not working even the input is showing the correct value
     xit("should load changes from made from server", async () => {
@@ -35,118 +33,114 @@ describe("E2E USER TESTING", function() {
         .goto(url)
         .wait(3000)
         .evaluate(() => {
-          const a = document.querySelector('input[dog-value="word"]').textContent;
-          const b = document.querySelector('input[dog-value="title"]').textContent;
-          const c = document.querySelector('input[dog-value="subject"]').textContent;
+          const a = document.querySelector('input[bd-value="word"]').textContent
+          const b = document.querySelector('input[bd-value="title"]')
+            .textContent
+          const c = document.querySelector('input[bd-value="subject"]')
+            .textContent
 
-          chai.assert.equal(a, "Changes");
-          chai.assert.equal(b, "From");
-          chai.assert.equal(c, "Server");
+          chai.assert.equal(a, "Changes")
+          chai.assert.equal(b, "From")
+          chai.assert.equal(c, "Server")
         })
         .end()
         .then(() => {})
-        .catch();
-    });
-  });
+        .catch()
+    })
+  })
 
-  describe("for multiple users at the same time", function() {
-    let nightmareA = null;
-    let nightmareB = null;
-    this.timeout("30s");
+  describe("for multiple users at the same time", function () {
+    let nightmareA = null
+    let nightmareB = null
+    this.timeout("30s")
 
     beforeEach(() => {
-      nightmareA = new Nightmare({ show: showScreens, x: 0, y: 0 });
-      nightmareB = new Nightmare({ show: showScreens, x: 600, y: 0 });
+      nightmareA = new Nightmare({ show: showScreens, x: 0, y: 0 })
+      nightmareB = new Nightmare({ show: showScreens, x: 600, y: 0 })
 
+      nightmareA.viewport(600, 600).goto(url).wait(3000)
+
+      nightmareB.viewport(600, 600).goto(url).wait(3000)
+    })
+
+    it("should collaborate on 2 bd-value's", async () => {
       nightmareA
-        .viewport(600, 600)
-        .goto(url)
-        .wait(3000);
-
-      nightmareB
-        .viewport(600, 600)
-        .goto(url)
-        .wait(3000);
-    });
-
-    it("should collaborate on 2 dog-value's", async () => {
-      nightmareA
-        .click('input[dog-value="word"]')
+        .click('input[bd-value="word"]')
         .type(
-          'input[dog-value="word"]',
+          'input[bd-value="word"]',
           "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
         ) //Backspace
         .type(
-          'input[dog-value="word"]',
+          'input[bd-value="word"]',
           "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
         ) //Delete
-        .type('input[dog-value="word"]', "user A editing here")
+        .type('input[bd-value="word"]', "user A editing here")
         .end()
-        .then(() => {});
+        .then(() => {})
 
       await nightmareB
-        .click('input[dog-value="subject"]')
+        .click('input[bd-value="subject"]')
         .type(
-          'input[dog-value="subject"]',
+          'input[bd-value="subject"]',
           "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
         ) //Backspace
         .type(
-          'input[dog-value="subject"]',
+          'input[bd-value="subject"]',
           "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
         ) //Delete
-        .type('input[dog-value="subject"]', "user B editing here")
+        .type('input[bd-value="subject"]', "user B editing here")
         .wait(1000)
         .evaluate(() => {
-          const a = document.querySelector('input[dog-value="word"]').value;
-          const b = document.querySelector('input[dog-value="subject"]').value;
+          const a = document.querySelector('input[bd-value="word"]').value
+          const b = document.querySelector('input[bd-value="subject"]').value
 
-          chai.assert.equal(a, "user A editing here");
-          chai.assert.equal(b, "user B editing here");
+          chai.assert.equal(a, "user A editing here")
+          chai.assert.equal(b, "user B editing here")
         })
         .end()
         .then(() => {})
-        .catch();
-    });
+        .catch()
+    })
 
-    //TODO: Make async/await
-    it("should update a parent dog-html content", async () => {
+    /* // TODO: Restore case where parents can be written
+    it("should update a parent bd-html content", async () => {
       nightmareA
-        .click('input[dog-value="data>name"]')
+        .click('input[bd-value="data>name"]')
         .type(
-          'input[dog-value="data>name"]',
+          'input[bd-value="data>name"]',
           "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
         ) //Backspace
         .type(
-          'input[dog-value="data>name"]',
+          'input[bd-value="data>name"]',
           "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
         ) //Delete
-        .type('input[dog-value="data>name"]', "first")
+        .type('input[bd-value="data>name"]', "first")
         .end()
-        .then(() => {});
+        .then(() => {})
 
       await nightmareB
-        .click('input[dog-value="data>address"]')
+        .click('input[bd-value="data>address"]')
         .type(
-          'input[dog-value="data>address"]',
+          'input[bd-value="data>address"]',
           "\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008\u0008"
         ) //Backspace
         .type(
-          'input[dog-value="data>address"]',
+          'input[bd-value="data>address"]',
           "\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F\u007F"
         ) //Delete
-        .type('input[dog-value="data>address"]', "second")
+        .type('input[bd-value="data>address"]', "second")
         .wait(1000)
         .evaluate(() => {
-          let a = document.querySelector('p[dog-html="data"]').textContent;
-          let b = document.querySelector('input[dog-value="data>name"]').value;
-          let c = document.querySelector('input[dog-value="data>address"]').value;
+          let a = document.querySelector('p[bd-html="data"]').textContent
+          let b = document.querySelector('input[bd-value="data>name"]').value
+          let c = document.querySelector('input[bd-value="data>address"]').value
 
-          chai.assert.include(a, b);
-          chai.assert.include(a, c);
+          chai.assert.include(a, b)
+          chai.assert.include(a, c)
         })
         .end()
         .then(() => {})
-        .catch();
-    });
-  });
-});
+        .catch()
+    })*/
+  })
+})
