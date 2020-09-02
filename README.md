@@ -48,7 +48,7 @@ See more examples at the [demo page](http://www.boy.dog/).
 
 ## Changelog
 
- - 2.X.X: Removed Puppeteer. Huge space improvements over previous version. Module 'boydog-client' no longer needed. It has been deprecated so far. 
+ - 2.X.X: Removed Puppeteer. Huge space improvements over previous version. Module 'boydog-client' no longer needed. Client module automatically starts and now there is no need to initialize it manually.
  - 1.X.X: Initial alpha realease.
 
 ## License
