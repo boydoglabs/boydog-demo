@@ -37,6 +37,20 @@ See more examples at the [demo page](http://www.boy.dog/).
  - boydog-demo (this repository): A demo showcasing all BoyDog capabilities. This is what you see  at [boy.dog](http://www.boy.dog). For simplicity all development is also made here. If you want to start a new project **or** develop a new feature clone this repository.
  - [sharedb-attribute-binding](https://github.com/adelriosantiago/sharedb-attribute-binding): A custom-made ShareDB binding that allows you to sync element attributes like id, class, href, etc.
 
+## Roadmap:
+
+ - [x] Travis tests
+ - [x] Alpha release
+ - [ ] Implement server middleware
+ - [ ] Allow users to see where other users are
+ - [ ] Implement plug-in system for extensibility
+ - [ ] Create `bd-for="n"` directive to create and bind `n` elements
+
+## Changelog
+
+ - 2.X.X: Removed Puppeteer. Huge space improvements over previous version. Module 'boydog-client' no longer needed. It has been deprecated so far. 
+ - 1.X.X: Initial alpha realease.
+
 ## License
 
 [MIT] © boy.dog
