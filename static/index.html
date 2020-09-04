@@ -278,11 +278,7 @@ server.listen(8080)
                 <p>Bind a scope variable and load <em>boydog-client</em> before the closing body tag:</p>
                 <pre><code class="text-left">&lt;body&gt
   <strong>&lt;input type="text" bd-value="realtime"&gt;</strong>
-
   <strong>&lt;script src="/boydog-client"&gt;&lt;/script&gt;</strong>
-  &lt;script&gt;
-    <strong>boydog.init()</strong>
-  &lt;/script&gt;
 &lt;/body&gt
 </code></pre>
               <p>That's it! Remember you can also bind <code>bd-class</code>, <code>bd-id</code>, <code>bd-href</code>, <code>bd-src</code> and <code>bd-style</code> attributes.</p>
@@ -317,8 +313,5 @@ server.listen(8080)
     
     <!-- boy.dog client -->
     <script src="/boydog-client"></script>
-    <script>
-      boydog.init()
-    </script>
   </body>
 </html>
