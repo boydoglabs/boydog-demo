@@ -269,7 +269,7 @@ const app = express()
 const server = http.createServer(app)
 
 <strong>let scope = {
-  realtime: "sample text",
+  name: "John Doe",
 }
 boydog.init(scope, server)</strong>
 
@@ -277,7 +277,7 @@ server.listen(8080)
 </code></pre>
                 <p>Bind a scope variable and load <em>boydog-client</em> before the closing body tag:</p>
                 <pre><code class="text-left">&lt;body&gt
-  <strong>&lt;input type="text" bd-value="realtime"&gt;</strong>
+  <strong>&lt;input type="text" bd-value="name"&gt;</strong>
   <strong>&lt;script src="/boydog-client"&gt;&lt;/script&gt;</strong>
 &lt;/body&gt
 </code></pre>
