@@ -17,7 +17,12 @@ You can use this repository as your starting boilerplate for your real-time coll
  - `npm start`
  - Browse localhost:3090 from two different computers.
 
+## Running e2e tests
+
+Do `npm run test`. Make sure the project is already running at 3090.
+
 ## Contributing
+
  - [boydog](https://github.com/boydoglabs/boydog): The server module, handles OT, auth, and creates the boydog-monitor.
  - boydog-demo (this repository): A demo showcasing all BoyDog capabilities. This is what you see  at [boy.dog](http://www.boy.dog). For simplicity all development is also made here. If you want to start a new project **or** develop a new feature clone this repository.
  - [sharedb-attribute-binding](https://github.com/adelriosantiago/sharedb-attribute-binding): A custom-made ShareDB binding that allows you to sync element attributes like id, class, href, etc.
