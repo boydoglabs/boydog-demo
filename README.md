@@ -5,7 +5,7 @@
 
 BoyDog is a framework for building ultra-fast, real-time collaborative web applications. BoyDog uses ShareDB's OT (operational transforms) to keep data consistent even if multiple users are editing the same text at the same time.
 
-![](https://raw.githubusercontent.com/boydoglabs/boydog-demo/master/sample.gif)
+[![](https://raw.githubusercontent.com/boydoglabs/boydog-demo/master/sample.gif)](http://www.boy.dog/)
 Demo: [www.boy.dog](http://www.boy.dog/).
 
 You can use this repository as your starting boilerplate for your real-time collaborative projects.

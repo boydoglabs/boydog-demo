@@ -1,10 +1,17 @@
 const http = require("http")
 const express = require("express")
 const boydog = require("boydog")
+const bodyParser = require("body-parser")
 const port = 3090
 
 const app = express()
 app.use(express.static("static"))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
+app.all("/debugScope", async (req, res) => {
+  return res.json(scope) // Debug scope with latest values
+})
 
 // Init server
 const server = http.createServer(app)
