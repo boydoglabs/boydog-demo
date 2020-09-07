@@ -14,7 +14,6 @@ let scope = {
   title: "initial title",
   subject: "random subject",
   thing: "red bold",
-  detectText: "lowercase",
   data: {
     name: "John Doe",
     address: "74 Henry Road",

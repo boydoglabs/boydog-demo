@@ -11,7 +11,7 @@
   "author": "BoyDog (www.boy.dog)",
   "license": "MIT",
   "dependencies": {
-    "boydog": "^2.0.5",
+    "boydog": "^2.0.6",
     "express": "^4.17.1"
   },
   "devDependencies": {
