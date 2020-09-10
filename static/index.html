@@ -253,7 +253,40 @@ var logic = {
           </div>
         </div>
 
-        <!-- <p class="example-line">Example of GET/SET from server:</p> -->
+        <p class="example-line">You can also change scope's values from the server:</p>
+        <div class="row">
+          <div class="column column-60">
+            <div class='tabs tabs_default'>
+              <div id='ex-1-boy'>
+                <span>
+<pre><code class="text-left">var scope = {
+  counter: 0
+};
+
+let diff = 1
+setInterval(() => {
+  if (scope.counter >= 3) diff = -1
+  if (scope.counter <= 0) diff = +1
+  scope.counter = parseInt(scope.counter) + diff
+}, 1000)
+</code></pre>
+                </span>
+              </div>
+              <div id='ex-1-dog'><span>
+<pre><code class="text-left">&lt;p&gt;Counter: &lt;span bd-html=&quot;counter&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+</code></pre>
+              </div>
+              <ul class='horizontal'>
+                <li><a href="#ex-1-boy">back</a></li>
+                <li><a href="#ex-1-dog">front</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="column">
+            <div class="example-spacer"></div>
+            <p>Counter: <span bd-html="counter"></span></p>
+          </div>
+        </div>
 
         <div class="row">
           <div class="column">
@@ -276,13 +309,13 @@ const server = app.listen(8080)
 }
 boydog.init(scope, server)</strong>
 </code></pre>
-                <p>Bind a scope variable and load <em>boydog-client</em> before the closing body tag:</p>
+                <p>Finally, bind your scope variables. Don't forget to load <em>boydog-client</em> before the closing body tag:</p>
                 <pre><code class="text-left">&lt;body&gt
   <strong>&lt;input type="text" bd-value="name"&gt;</strong>
+  
   <strong>&lt;script src="/boydog-client"&gt;&lt;/script&gt;</strong>
 &lt;/body&gt
 </code></pre>
-              <p>That's it! Remember you can also bind <code>bd-class</code>, <code>bd-id</code>, <code>bd-href</code>, <code>bd-src</code> and <code>bd-style</code> attributes.</p>
               </div>
             </div>
           </div>
