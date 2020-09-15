@@ -4,11 +4,14 @@
 [![Build Status](https://travis-ci.org/boydoglabs/boydog-demo.png?branch=master)](https://travis-ci.org/boydoglabs/boydog-demo)
 
 BoyDog is a framework for building ultra-fast, real-time collaborative web applications. BoyDog uses ShareDB's OT (operational transforms) to keep data consistent even if multiple users are editing the same text at the same time.
+You can use this repository as your starting boilerplate for your real-time collaborative projects.
 
 [![](https://raw.githubusercontent.com/boydoglabs/boydog-demo/master/sample.gif)](http://www.boy.dog/)
 Demo: [www.boy.dog](http://www.boy.dog/).
 
-You can use this repository as your starting boilerplate for your real-time collaborative projects.
+## Getting started
+
+See instructions at [boydog demo](http://www.boy.dog/)
 
 ## Running this demo
 
