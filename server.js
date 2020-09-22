@@ -9,8 +9,8 @@ app.use(express.static("static"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.all("/debugScope", async (req, res) => {
-  return res.json(scope) // Debug scope with latest values
+app.get("/exampleGetScope", (req, res) => {
+  return res.json(scope)
 })
 
 // Init server

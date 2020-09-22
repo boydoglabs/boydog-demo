@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Chai for E2E testing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js" integrity="sha512-x3BwhuxT44pOQZanacQyDnrB2r1L1AUfjUaefYArTHR9sHEvvy3NSnnm5Z7GAl5YPc3+GEWFT0S34obDSzUvaQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.0/cash.min.js" integrity="sha512-sgDgZX/GgfD7qSeMjPN/oE9EQgXZJW55FIjdexVT60QerG2gAWhR9QDQEGt3O90Dy9jVcwMWsoTMhLgldIiKXw==" crossorigin="anonymous"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43591418-4"></script>
     <script>
@@ -213,7 +214,7 @@
               </div>
             </div>
 
-            <!-- TODO: Implement middleware, after an OP text should become uppercase -->
+            <!-- TODO: Implement middleware feature, after an OP text should become uppercase -->
             <!-- <p class="example-line">You can trigger custom server logic when data changes:</p>
             <div class="row">
               <div class="column column-60">
@@ -249,7 +250,7 @@ var logic = {
                   <p>Write "uppercase" to trigger a server custom logic change</p>
                 </div>
               </div>
-            </div>-->
+            </div> -->
           </div>
         </div>
 
@@ -288,6 +289,40 @@ setInterval(() => {
           </div>
         </div>
 
+        <!-- TODO: Implement feature -->
+        <!-- <p class="example-line">Adding more scope variables in the back-end will automatically sync them in the front-end</p>
+        <div class="row">
+          <div class="column column-60">
+            <div class='tabs tabs_default'>
+              <div id='ex-1-boy'>
+                <span>
+<pre><code class="text-left">var scope = {};
+
+app.post("/add", (req, res) => {
+  scope.added = "hello"
+  boydog.refresh() // Refresh currently connected clients
+}
+</code></pre>
+                </span>
+              </div>
+              <div id='ex-1-dog'><span>
+<pre><code class="text-left">&lt;p&gt;Counter: &lt;span bd-html=&quot;counter&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+</code></pre>
+              </div>
+              <ul class='horizontal'>
+                <li><a href="#ex-1-boy">back</a></li>
+                <li><a href="#ex-1-dog">front</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="column">
+            <div class="example-spacer"></div>
+            <button id="clickToAdd">Click to add</button>
+            <button id="clickToRemove">Click to remove</button>
+            <p>Added: <input bd-value="added"/></p>
+          </div>
+        </div> -->
+
         <div class="row">
           <div class="column">
             <h3 class="title text-center">Getting started</h3>
@@ -314,6 +349,9 @@ boydog.init(scope, server)</strong>
   <strong>&lt;input type="text" bd-value="name"&gt;</strong>
   
   <strong>&lt;script src="/boydog-client"&gt;&lt;/script&gt;</strong>
+  <strong>&lt;script&gt;
+    boydog.init() // Or `boydog.init("#my_div", "my_host:9090")` for a custom scope and host
+  &lt;/script&gt;</strong>
 &lt;/body&gt
 </code></pre>
               </div>
@@ -347,5 +385,8 @@ boydog.init(scope, server)</strong>
     
     <!-- boy.dog client -->
     <script src="/boydog-client"></script>
+    <script>
+      boydog.init()
+    </script>
   </body>
 </html>
