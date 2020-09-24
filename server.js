@@ -21,20 +21,17 @@ let scope = {
   title: "initial title",
   subject: "random subject",
   thing: "red bold",
-  counter: 0,
+  number: "0",
   data: {
     name: "John Doe",
     address: "74 Henry Road",
   },
 }
 
-// Counter example
-let diff = 1
+// Server write example
 setInterval(() => {
-  if (scope.counter >= 3) diff = -1
-  if (scope.counter <= 0) diff = +1
-  scope.counter = parseInt(scope.counter) + diff
-}, 1000)
+  scope.number = String(Math.random())
+}, 250)
 
 boydog.init(scope, server)
 

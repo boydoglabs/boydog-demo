@@ -76,7 +76,7 @@
               </div>
               <div class="column">
                 <div class="example-spacer"></div>
-                <input type="text" placeholder="Write something" bd-value="word">
+                <input type="text" placeholder="Write something" bd-value="word" bd-verbose="true">
               </div>
             </div>
 
@@ -261,15 +261,12 @@ var logic = {
               <div id='ex-1-boy'>
                 <span>
 <pre><code class="text-left">var scope = {
-  counter: 0
+  number: 0
 };
 
-let diff = 1
 setInterval(() => {
-  if (scope.counter >= 3) diff = -1
-  if (scope.counter <= 0) diff = +1
-  scope.counter = parseInt(scope.counter) + diff
-}, 1000)
+  scope.number = String(Math.random())
+}, 250)
 </code></pre>
                 </span>
               </div>
@@ -285,7 +282,7 @@ setInterval(() => {
           </div>
           <div class="column">
             <div class="example-spacer"></div>
-            <p>Counter: <span bd-html="counter"></span></p>
+            <p>Counter: <span bd-html="number"></span></p>
           </div>
         </div>
 
