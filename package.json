@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "boydog": "^2.0.13",
+    "boydog": "^2.0.16",
     "express": "^4.17.1"
   },
   "devDependencies": {
