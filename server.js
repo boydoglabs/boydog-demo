@@ -31,7 +31,7 @@ let scope = {
 // Server write example
 setInterval(() => {
   scope.number = String(Math.random())
-}, 250)
+}, 1000)
 
 boydog.init(scope, server)
 

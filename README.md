@@ -30,11 +30,6 @@ Do `npm run test`. Make sure the project is already running at 3090.
  - boydog-demo (this repository): A demo showcasing all BoyDog capabilities. This is what you see  at [boy.dog](http://www.boy.dog). For simplicity all development is also made here. If you want to start a new project **or** develop a new feature clone this repository.
  - [sharedb-attribute-binding](https://github.com/adelriosantiago/sharedb-attribute-binding): A custom-made ShareDB binding that allows you to sync element attributes like id, class, href, etc.
 
-## Changelog
-
- - 2.X.X: Removed Puppeteer. Huge space improvements over previous version. Module 'boydog-client' no longer needed. Client module automatically starts and now there is no need to initialize it manually.
- - 1.X.X: Initial alpha realease.
-
 ## License
 
 [MIT] © boy.dog
