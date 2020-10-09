@@ -425,6 +425,12 @@ div.example-spacer {
   margin-bottom: 0px;
 }
 
+@media (max-width:40rem){
+    .row span{
+        min-width: 170%;
+    }
+}
+
 .class-example span.red { color: red; }
 .class-example span.blue { color: blue; }
 .class-example span.yellow { color: yellow; }
