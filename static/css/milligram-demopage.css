@@ -433,3 +433,5 @@ div.example-spacer {
 .class-example span.black { color: black; }
 .class-example span.bold { font-weight: bold; }
 .class-example span.italic { font-style: italic; }
+.row .steps .text-evidence{ color: #888; display: inline;}
+.row .steps { color: rgb(184, 184, 184)};
