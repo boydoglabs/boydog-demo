@@ -28,6 +28,17 @@
 
       gtag('config', 'UA-43591418-4');
     </script>
+    <!-- Debug CSS styles -->
+    <style>
+      .class-example span.red { color: red; }
+      .class-example span.blue { color: blue; }
+      .class-example span.yellow { color: yellow; }
+      .class-example span.green { color: green; }
+      .class-example span.white { color: white; }
+      .class-example span.black { color: black; }
+      .class-example span.bold { font-weight: bold; }
+      .class-example span.italic { font-style: italic; }
+    </style>
   </head>
   
   <body>
@@ -192,8 +203,8 @@
                   </div>
                   <div id='ex-1-dog'><span>
 <pre><code class="text-left">&lt;input type=&quot;text&quot; bd-value=&quot;thing&quot;&gt;
-&lt;blockquote bd-html=&quot;thing&quot;&gt;&lt;/blockquote&gt;
-&lt;span bd-class=&quot;thing&quot;&gt;Try &quot;red&quot;, &quot;blue&quot; or &quot;italic blue&quot;&lt;/span&gt;
+&lt;blockquote bd-html=&quot;'The quote is: ' + thing&quot;&gt;&lt;/blockquote&gt;
+&lt;span bd-class=&quot;'my other classes ' + thing&quot;&gt;Try &quot;red&quot;, &quot;blue&quot; or &quot;italic blue&quot;&lt;/span&gt;
 </code></pre>
                   </div>
                   <ul class='horizontal'>
@@ -207,9 +218,9 @@
                 <input type="text" placeholder="Write something" bd-value="thing">
                 <!-- TODO: Enable this again, for some reason href it is not working -->
                 <!-- <p>As an href: <a bd-href="thing">Try "http://boy.dog"</a></p> -->
-                <blockquote bd-html="thing"></blockquote>
+                <blockquote bd-html="'The quote is: ' + thing"></blockquote>
                 <div class="class-example">
-                  <span bd-class="thing">As a class. Try "red", "blue" or "italic blue"</span></p>
+                  <span bd-class="'my other classes ' + thing">As a class. Try "red", "blue" or "italic blue"</span>
                 </div>
               </div>
             </div>
