@@ -340,27 +340,27 @@ app.post("/add", (req, res) => {
                 <p>Install <em>boydog</em>:</p>
                 <pre><code class="text-left">npm install --save boydog</code></pre>
                 <p>Init boydog in your Express server:</p>
-<pre><code class="text-left">const express = require("express")
-<strong>const boydog = require("boydog")</strong>
+<pre><code class="text-left steps"><span class="washed">const express = require("express")</span>
+const boydog = require("boydog")
 
-const app = express()
-app.all("/", (req, res) => { /* My routes */ })
-const server = app.listen(8080)
+<span class="washed">const app = express()</span>
+<span class="washed">app.all("/", (req, res) => { /* My routes */ })</span>
+<span class="washed">const server = app.listen(8080)</span>
 
-<strong>let scope = {
+let scope = {
   name: "John Doe",
 }
-boydog.init(scope, server)</strong>
+boydog.init(scope, server)
 </code></pre>
                 <p>Finally, bind your scope variables. Don't forget to load <em>boydog-client</em> before the closing body tag:</p>
-                <pre><code class="text-left">&lt;body&gt
-  <strong>&lt;input type="text" bd-value="name"&gt;</strong>
+                <pre><code class="text-left steps"><span class="washed">&lt;body&gt</span>
+  &lt;input type="text" bd-value="name"&gt;
   
-  <strong>&lt;script src="/boydog-client"&gt;&lt;/script&gt;</strong>
-  <strong>&lt;script&gt;
+  &lt;script src="/boydog-client"&gt;&lt;/script&gt;
+  &lt;script&gt;
     boydog.init() // Or `boydog.init("#my_div", "my_host:9090")` for a custom scope and host
-  &lt;/script&gt;</strong>
-&lt;/body&gt
+  &lt;/script&gt;
+<span class="washed">&lt;/body&gt</span>
 </code></pre>
               </div>
             </div>

@@ -430,3 +430,7 @@ div.example-spacer {
         min-width: 170%;
     }
 }
+
+code.steps .washed {
+    color: #aaa;
+}
