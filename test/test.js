@@ -3,7 +3,7 @@ const url = "http://localhost:3090/"
 
 const showScreens = false
 
-describe("E2E USER TESTING", function () {
+describe("E2E USER TESTING (these tests require 'boydog-demo' to be running)", function () {
   describe("for a single user", function () {
     let nightmare = null
     this.timeout("30s")
@@ -25,23 +25,16 @@ describe("E2E USER TESTING", function () {
         .catch()
     })
 
-    //TODO: Fix this test... For some reason it is not working even the input is showing the correct value
-    xit("should load changes from made from server", async () => {
+    it("should load changes from made from server", async () => {
       await nightmare
         .goto(url + "testScopeChangeFromServer")
         .wait(1000)
         .goto(url)
         .wait(3000)
         .evaluate(() => {
-          const a = document.querySelector('input[bd-value="word"]').textContent
-          const b = document.querySelector('input[bd-value="title"]')
-            .textContent
-          const c = document.querySelector('input[bd-value="subject"]')
-            .textContent
+          const a = document.querySelector('input[bd-value="thing"]').value
 
-          chai.assert.equal(a, "Changes")
-          chai.assert.equal(b, "From")
-          chai.assert.equal(c, "Server")
+          chai.assert.equal(a, "blue italic")
         })
         .end()
         .then(() => {})

@@ -13,6 +13,11 @@ app.get("/exampleGetScope", (req, res) => {
   return res.json(scope)
 })
 
+app.get("/testScopeChangeFromServer", (req, res) => {
+  scope.thing = "blue italic"
+  return res.send("blue italic has been written to 'scope.thing'")
+})
+
 // Init server
 const server = http.createServer(app)
 
