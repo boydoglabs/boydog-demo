@@ -15,7 +15,7 @@ app.get("/exampleGetScope", (req, res) => {
 
 app.get("/testScopeChangeFromServer", (req, res) => {
   scope.thing = "blue italic"
-  return res.send("blue italic has been written to 'scope.thing'")
+  return res.send("'blue italic' has been written to 'scope.thing'")
 })
 
 // Init server
