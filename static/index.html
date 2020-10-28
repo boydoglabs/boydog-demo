@@ -205,6 +205,7 @@
 <pre><code class="text-left">&lt;input type=&quot;text&quot; bd-value=&quot;thing&quot;&gt;
 &lt;blockquote bd-html=&quot;'The quote is: ' + thing&quot;&gt;&lt;/blockquote&gt;
 &lt;span bd-class=&quot;'my other classes ' + thing&quot;&gt;Try &quot;red&quot;, &quot;blue&quot; or &quot;italic blue&quot;&lt;/span&gt;
+&lt;img bd-src=&quot;'/img/' + thing + '.jpg'&quot /&gt;
 </code></pre>
                   </div>
                   <ul class='horizontal'>
@@ -218,10 +219,13 @@
                 <input type="text" placeholder="Write something" bd-value="thing">
                 <!-- TODO: Enable this again, for some reason href it is not working -->
                 <!-- <p>As an href: <a bd-href="thing">Try "http://boy.dog"</a></p> -->
-                <blockquote bd-html="'The quote is: ' + thing"></blockquote>
+                <blockquote bd-html="'The quote HTML is: ' + thing"></blockquote>
                 <div class="class-example">
-                  <span bd-class="'my other classes ' + thing">As a class. Try "red", "blue" or "italic blue"</span>
+                  <span bd-class="'my other classes ' + thing">As a class. Try "red", "blue" or "italic blue".</span>
                 </div>
+                <br/>
+                <p>As a src (cats are called "red", "blue", "yellow", "bold" and "italic"):</p>
+                <img onerror="this.src='https://via.placeholder.com/200x100'" bd-src="'/img/' + thing + '.jpg'" width="200px" height="100px" />
               </div>
             </div>
 
