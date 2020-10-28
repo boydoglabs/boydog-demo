@@ -35,7 +35,7 @@ let scope = {
 
 // Server write example
 setInterval(() => {
-  scope.number = String(Math.random())
+  scope.number = String(Math.round(Math.random() * 9))
 }, 1000)
 
 boydog.init(scope, server)
